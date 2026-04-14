@@ -193,44 +193,25 @@ a:hover {
 
 .paper-list {
   display: grid;
-  gap: 2.6rem;
+  gap: 1.8rem;
 }
 
 .paper-card {
-  display: grid;
-  grid-template-columns: minmax(0, 0.96fr) minmax(20rem, 1.12fr);
-  align-items: center;
-  gap: 2.2rem;
-  padding: 0.5rem 0 0;
+  max-width: 44rem;
+  padding: 0.25rem 0 0;
 }
 
 .paper-card + .paper-card {
-  padding-top: 2.6rem;
+  padding-top: 1.9rem;
   border-top: 1px solid rgba(35, 38, 43, 0.09);
-}
-
-.paper-card--reverse {
-  grid-template-columns: minmax(20rem, 1.12fr) minmax(0, 0.96fr);
-}
-
-.paper-card--reverse .paper-copy {
-  order: 2;
-}
-
-.paper-card--reverse .paper-stage {
-  order: 1;
 }
 
 .paper-card h2 {
   margin: 0 0 0.55rem;
   font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  font-size: 1.68rem;
-  line-height: 1.18;
+  font-size: 1.55rem;
+  line-height: 1.22;
   font-weight: 500;
-}
-
-.paper-copy {
-  max-width: 30rem;
 }
 
 .paper-authors {
@@ -238,44 +219,17 @@ a:hover {
 }
 
 .paper-insight {
-  margin: 1.35rem 0 0;
+  margin: 1.05rem 0 0;
   font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  font-size: 1.34rem;
+  font-size: 1.18rem;
   line-height: 1.35;
   color: rgba(24, 28, 34, 0.92);
 }
 
 .paper-caption {
-  margin-top: 0.95rem;
-  max-width: 30rem;
+  margin-top: 0.7rem;
+  max-width: 42rem;
   color: rgba(79, 83, 89, 0.92);
-}
-
-.paper-stage {
-  min-width: 0;
-}
-
-.motion-shell {
-  position: relative;
-  overflow: hidden;
-  padding: 1.05rem;
-  border-radius: 28px;
-  border: 1px solid rgba(35, 38, 43, 0.08);
-  background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.52), transparent 35%),
-    linear-gradient(180deg, rgba(255, 251, 246, 0.56), rgba(249, 244, 236, 0.42));
-  box-shadow: 0 22px 70px rgba(40, 36, 28, 0.07);
-  backdrop-filter: blur(12px);
-}
-
-.motion-shell::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 16% 18%, rgba(200, 167, 120, 0.14), transparent 20%),
-    radial-gradient(circle at 85% 82%, rgba(88, 113, 146, 0.1), transparent 24%);
 }
 
 @media (max-width: 820px) {
@@ -304,21 +258,5 @@ a:hover {
 
   .hero-intro {
     width: 100%;
-  }
-
-  .paper-card,
-  .paper-card--reverse {
-    grid-template-columns: 1fr;
-    gap: 1.35rem;
-  }
-
-  .paper-card--reverse .paper-copy,
-  .paper-card--reverse .paper-stage {
-    order: initial;
-  }
-
-  .motion-shell {
-    padding: 0.8rem;
-    border-radius: 24px;
   }
 }

@@ -56,8 +56,8 @@ import { profile, research, papers, siteMeta } from "../data/site";
         <p>Selected Papers</p>
       </div>
       <div class="section-body paper-list">
-        {papers.map((paper, index) => (
-          <PaperCard paper={paper} index={index} />
+        {papers.map((paper) => (
+          <PaperCard paper={paper} />
         ))}
       </div>
     </section>

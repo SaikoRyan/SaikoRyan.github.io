@@ -32,7 +32,6 @@ export const research = [
 
 export const papers = [
   {
-    animationId: "llmInference",
     title:
       "Large-Scale LLM Inference with Heterogeneous Workloads: Prefill-Decode Contention and Asymptotically Optimal Control",
     authors: "Ruihan Lin, Zean Han, Zezhen Ding, and Jiheng Zhang",
@@ -43,7 +42,6 @@ export const papers = [
       "When prefill and decode compete for shared GPUs, adaptive admission and routing recover stability."
   },
   {
-    animationId: "rbfPricing",
     title:
       "Dynamic Pricing under Revenue-Based Financing: Global Stability versus Local Inefficiency",
     authors: "Ruihan Lin, Yunrui Ling, and Jiheng Zhang",
@@ -54,7 +52,6 @@ export const papers = [
       "RBF creates a non-monotone pricing distortion, yet the repayment cap acts as a safety valve in the long run."
   },
   {
-    animationId: "llmJudge",
     title:
       "When to Screen, When to Bypass: LLM-Judges in Resource-Scarce AI-Human Workflow",
     authors: "Ruihan Lin and Jiheng Zhang",
