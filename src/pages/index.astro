@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PaperCard from "../components/PaperCard.astro";
 import { profile, research, papers, siteMeta } from "../data/site";
 ---
 
@@ -12,7 +13,6 @@ import { profile, research, papers, siteMeta } from "../data/site";
           <a href="#about">About</a>
           <a href="#research">Research</a>
           <a href="#papers">Papers</a>
-          <a href="#contact">Contact</a>
         </nav>
       </div>
 
@@ -51,39 +51,14 @@ import { profile, research, papers, siteMeta } from "../data/site";
       </div>
     </section>
 
-    <section class="section" id="papers">
+    <section class="section section-papers" id="papers">
       <div class="section-heading">
         <p>Selected Papers</p>
       </div>
       <div class="section-body paper-list">
-        {papers.map((paper) => (
-          <article class="paper">
-            <p class="paper-meta">{paper.venue}</p>
-            <h2>
-              <a href={paper.href} target="_blank" rel="noreferrer">
-                {paper.title}
-              </a>
-            </h2>
-            <p class="paper-authors">{paper.authors}</p>
-            <p class="paper-summary">{paper.summary}</p>
-          </article>
+        {papers.map((paper, index) => (
+          <PaperCard paper={paper} index={index} />
         ))}
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="section-heading">
-        <p>Contact</p>
-      </div>
-      <div class="section-body contact-card">
-        <p>
-          For research discussions, collaborations, or academic opportunities,
-          feel free to reach out.
-        </p>
-        <p>
-          <a href={`mailto:${profile.email}`}>{profile.email}</a>
-        </p>
-        <p>{profile.institution}</p>
       </div>
     </section>
   </main>

@@ -32,30 +32,36 @@ export const research = [
 
 export const papers = [
   {
+    animationId: "llmInference",
     title:
       "Large-Scale LLM Inference with Heterogeneous Workloads: Prefill-Decode Contention and Asymptotically Optimal Control",
     authors: "Ruihan Lin, Zean Han, Zezhen Ding, and Jiheng Zhang",
     venue: "Major revision, Management Science",
     href: "https://arxiv.org/abs/2602.02987",
-    summary:
-      "Models prefill-decode contention in large LLM serving systems and develops asymptotically optimal gate-and-route control policies."
+    insightTitle: "Gate-and-route turns contention into controlled flow.",
+    caption:
+      "When prefill and decode compete for shared GPUs, adaptive admission and routing recover stability."
   },
   {
+    animationId: "rbfPricing",
     title:
       "Dynamic Pricing under Revenue-Based Financing: Global Stability versus Local Inefficiency",
     authors: "Ruihan Lin, Yunrui Ling, and Jiheng Zhang",
     venue: "Under review, Management Science",
     href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6237799",
-    summary:
-      "Studies how revenue-based financing reshapes pricing decisions and reveals a trade-off between global stability and local inefficiency."
+    insightTitle: "The distortion peaks in the middle, then fades over time.",
+    caption:
+      "RBF creates a non-monotone pricing distortion, yet the repayment cap acts as a safety valve in the long run."
   },
   {
+    animationId: "llmJudge",
     title:
       "When to Screen, When to Bypass: LLM-Judges in Resource-Scarce AI-Human Workflow",
     authors: "Ruihan Lin and Jiheng Zhang",
     venue: "Under review, Operations Research",
     href: "https://arxiv.org/abs/2603.13870",
-    summary:
-      "Analyzes how LLM judges should be allocated in human-AI workflows when screening capacity is scarce and bottlenecks shift over time."
+    insightTitle: "Whether to screen depends on where the bottleneck sits.",
+    caption:
+      "Judges amplify scarce human review only in the right regime; otherwise they can create a rework trap."
   }
 ];

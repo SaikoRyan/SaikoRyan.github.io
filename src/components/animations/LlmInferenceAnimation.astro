@@ -1,0 +1,212 @@
+<div class="paper-motion motion-llm" aria-hidden="true">
+  <svg viewBox="0 0 520 280" role="img" aria-label="Animation showing prefill-decode contention and gate-and-route control in LLM inference">
+    <defs>
+      <linearGradient id="llmGpu" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#f4ddbd" />
+        <stop offset="100%" stop-color="#d8b27a" />
+      </linearGradient>
+      <linearGradient id="llmFlow" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#7b95bb" />
+        <stop offset="100%" stop-color="#24466d" />
+      </linearGradient>
+    </defs>
+
+    <g class="llm-frame">
+      <rect x="28" y="66" width="74" height="148" rx="22" class="node subtle" />
+      <rect x="132" y="78" width="96" height="50" rx="18" class="node prefill" />
+      <rect x="132" y="154" width="96" height="50" rx="18" class="node decode" />
+      <circle cx="286" cy="141" r="34" class="node gate" />
+      <rect x="350" y="74" width="128" height="60" rx="22" class="node gpu" />
+      <rect x="350" y="148" width="128" height="60" rx="22" class="node gpu" />
+
+      <path d="M102 102 H132" class="flow-line" />
+      <path d="M102 178 H132" class="flow-line" />
+      <path d="M228 103 H252 C268 103 272 112 277 123" class="flow-line soft" />
+      <path d="M228 179 H252 C268 179 272 170 277 159" class="flow-line soft" />
+      <path d="M320 126 C338 114 344 106 350 104" class="flow-line" />
+      <path d="M320 156 C338 168 344 176 350 178" class="flow-line" />
+      <path d="M478 104 H500" class="flow-line thin" />
+      <path d="M478 178 H500" class="flow-line thin" />
+
+      <rect x="242" y="86" width="88" height="112" rx="28" class="contention-cloud" />
+      <text x="65" y="92" class="label muted" text-anchor="middle">Requests</text>
+      <text x="180" y="108" class="label" text-anchor="middle">Prefill</text>
+      <text x="180" y="184" class="label" text-anchor="middle">Decode</text>
+      <text x="286" y="146" class="label small" text-anchor="middle">Gate</text>
+      <text x="414" y="109" class="label" text-anchor="middle">GPU Pool A</text>
+      <text x="414" y="183" class="label" text-anchor="middle">GPU Pool B</text>
+      <text x="286" y="219" class="annotation" text-anchor="middle">contention reduced by adaptive routing</text>
+
+      <g class="moving-tokens warm">
+        <circle r="6">
+          <animateMotion dur="4.6s" repeatCount="indefinite" path="M40 108 L90 108 L135 108 L185 108 Q228 108 252 111 Q275 116 285 136 Q320 144 355 108 L432 108" />
+        </circle>
+        <circle r="6" class="delay-1">
+          <animateMotion dur="4.6s" begin="-1.5s" repeatCount="indefinite" path="M48 98 L96 98 L141 98 L188 98 Q229 99 251 104 Q271 112 286 135 Q325 148 358 108 L446 108" />
+        </circle>
+      </g>
+
+      <g class="moving-tokens cool">
+        <circle r="5.5">
+          <animateMotion dur="4.8s" repeatCount="indefinite" path="M38 176 L92 176 L136 176 L187 176 Q227 176 252 171 Q274 166 286 148 Q320 154 355 178 L430 178" />
+        </circle>
+        <circle r="5.5" class="delay-2">
+          <animateMotion dur="4.8s" begin="-2.2s" repeatCount="indefinite" path="M52 186 L97 186 L141 186 L186 186 Q227 186 252 178 Q276 169 286 149 Q322 158 356 178 L446 178" />
+        </circle>
+      </g>
+
+      <g class="gate-pulse">
+        <circle cx="286" cy="141" r="39" class="pulse-ring" />
+        <circle cx="286" cy="141" r="48" class="pulse-ring delay-2" />
+      </g>
+    </g>
+  </svg>
+</div>
+
+<style>
+  .paper-motion {
+    width: 100%;
+  }
+
+  .paper-motion svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .node {
+    fill: rgba(255, 251, 246, 0.72);
+    stroke: rgba(39, 46, 57, 0.18);
+    stroke-width: 1.2;
+  }
+
+  .subtle {
+    fill: rgba(255, 248, 239, 0.42);
+  }
+
+  .prefill {
+    fill: rgba(229, 193, 138, 0.3);
+  }
+
+  .decode {
+    fill: rgba(118, 145, 184, 0.16);
+  }
+
+  .gpu {
+    fill: url(#llmGpu);
+    opacity: 0.82;
+  }
+
+  .gate {
+    fill: rgba(255, 253, 249, 0.95);
+  }
+
+  .flow-line {
+    fill: none;
+    stroke: rgba(45, 69, 106, 0.55);
+    stroke-width: 2.6;
+    stroke-linecap: round;
+  }
+
+  .flow-line.soft {
+    stroke: rgba(197, 150, 87, 0.55);
+  }
+
+  .flow-line.thin {
+    stroke-width: 2;
+    opacity: 0.55;
+  }
+
+  .contention-cloud {
+    fill: rgba(199, 138, 68, 0.12);
+    animation: contentionPulse 4s ease-in-out infinite;
+  }
+
+  .label {
+    fill: rgba(28, 33, 41, 0.88);
+    font-size: 14px;
+    font-family: "Inter", "Segoe UI", sans-serif;
+    letter-spacing: 0.02em;
+  }
+
+  .label.small {
+    font-size: 13px;
+  }
+
+  .label.muted {
+    fill: rgba(92, 96, 102, 0.84);
+  }
+
+  .annotation {
+    fill: rgba(88, 92, 98, 0.82);
+    font-size: 12px;
+    font-family: "Inter", "Segoe UI", sans-serif;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .moving-tokens circle {
+    transform-origin: center;
+  }
+
+  .moving-tokens.warm circle {
+    fill: #bf7d38;
+    filter: drop-shadow(0 0 10px rgba(191, 125, 56, 0.2));
+  }
+
+  .moving-tokens.cool circle {
+    fill: url(#llmFlow);
+    filter: drop-shadow(0 0 10px rgba(36, 70, 109, 0.18));
+  }
+
+  .pulse-ring {
+    fill: none;
+    stroke: rgba(40, 69, 106, 0.18);
+    stroke-width: 1.4;
+    transform-origin: center;
+    animation: ringExpand 4.2s ease-out infinite;
+  }
+
+  .delay-2 {
+    animation-delay: 2.1s;
+  }
+
+  @keyframes contentionPulse {
+    0%, 100% {
+      opacity: 0.22;
+      transform: scale(0.94);
+      transform-origin: center;
+    }
+
+    35% {
+      opacity: 0.58;
+      transform: scale(1.03);
+    }
+
+    65% {
+      opacity: 0.28;
+      transform: scale(0.98);
+    }
+  }
+
+  @keyframes ringExpand {
+    0% {
+      opacity: 0;
+      transform: scale(0.92);
+    }
+
+    20% {
+      opacity: 1;
+    }
+
+    75% {
+      opacity: 0.1;
+      transform: scale(1.18);
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(1.22);
+    }
+  }
+</style>

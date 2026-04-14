@@ -1,0 +1,185 @@
+<div class="paper-motion motion-judge" aria-hidden="true">
+  <svg viewBox="0 0 520 280" role="img" aria-label="Animation showing that optimal screening in an AI-human workflow depends on the current bottleneck">
+    <g>
+      <rect x="34" y="110" width="100" height="56" rx="20" class="node worker" />
+      <rect x="192" y="58" width="106" height="52" rx="20" class="node judge" />
+      <rect x="192" y="164" width="126" height="56" rx="20" class="node human" />
+      <rect x="392" y="110" width="94" height="56" rx="20" class="node release" />
+
+      <text x="84" y="143" text-anchor="middle" class="label">AI Worker</text>
+      <text x="245" y="89" text-anchor="middle" class="label">LLM Judge</text>
+      <text x="255" y="197" text-anchor="middle" class="label">Human Review</text>
+      <text x="439" y="143" text-anchor="middle" class="label">Release</text>
+
+      <path d="M134 120 C162 108 174 99 192 93" class="flow-line judge-lane" />
+      <path d="M134 156 C162 170 178 177 192 184" class="flow-line bypass-lane" />
+      <path d="M246 110 V164" class="flow-line human-lane" />
+      <path d="M318 192 H392" class="flow-line release-lane" />
+      <path d="M220 109 C206 130 187 146 142 156" class="flow-line rework-lane" />
+
+      <text x="430" y="58" text-anchor="end" class="regime-label label-a">human bottleneck</text>
+      <text x="430" y="58" text-anchor="end" class="regime-label label-b">judge bottleneck</text>
+
+      <g class="regime regime-a">
+        <circle r="5.5" class="token warm">
+          <animateMotion dur="4.4s" repeatCount="indefinite" path="M58 136 C104 136 130 123 160 108 C181 98 199 92 216 90 C238 90 246 116 246 160 C262 186 320 192 420 192" />
+        </circle>
+        <circle r="5.5" class="token warm">
+          <animateMotion dur="4.4s" begin="-1.5s" repeatCount="indefinite" path="M64 136 C110 136 138 125 164 109 C184 99 202 92 218 90 C240 90 246 116 246 160 C264 186 322 192 426 192" />
+        </circle>
+        <circle r="4.8" class="token cool">
+          <animateMotion dur="4.4s" begin="-2.8s" repeatCount="indefinite" path="M66 146 C118 156 152 170 192 184 C238 184 318 192 420 192" />
+        </circle>
+      </g>
+
+      <g class="regime regime-b">
+        <circle r="5.2" class="token cool">
+          <animateMotion dur="4.4s" repeatCount="indefinite" path="M56 146 C118 160 154 174 192 184 C246 184 318 192 420 192" />
+        </circle>
+        <circle r="5.2" class="token cool">
+          <animateMotion dur="4.4s" begin="-1.8s" repeatCount="indefinite" path="M62 146 C122 160 158 175 192 184 C250 184 320 192 428 192" />
+        </circle>
+        <circle r="4.8" class="token danger">
+          <animateMotion dur="4.4s" begin="-0.8s" repeatCount="indefinite" path="M232 110 C214 130 198 144 140 156 C118 156 104 150 88 144" />
+        </circle>
+        <circle r="4.8" class="token danger">
+          <animateMotion dur="4.4s" begin="-2.7s" repeatCount="indefinite" path="M228 110 C212 130 196 144 138 156 C118 156 104 150 90 144" />
+        </circle>
+      </g>
+
+      <text x="260" y="243" text-anchor="middle" class="annotation">optimal screening changes when the bottleneck changes</text>
+    </g>
+  </svg>
+</div>
+
+<style>
+  .paper-motion {
+    width: 100%;
+  }
+
+  .paper-motion svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .node {
+    fill: rgba(255, 252, 247, 0.76);
+    stroke: rgba(39, 46, 57, 0.16);
+    stroke-width: 1.2;
+  }
+
+  .worker {
+    fill: rgba(255, 248, 239, 0.64);
+  }
+
+  .judge {
+    fill: rgba(230, 195, 145, 0.34);
+  }
+
+  .human {
+    fill: rgba(122, 145, 180, 0.16);
+  }
+
+  .release {
+    fill: rgba(255, 248, 239, 0.52);
+  }
+
+  .flow-line {
+    fill: none;
+    stroke-width: 2.6;
+    stroke-linecap: round;
+  }
+
+  .judge-lane,
+  .human-lane,
+  .release-lane {
+    stroke: rgba(40, 69, 106, 0.48);
+  }
+
+  .bypass-lane {
+    stroke: rgba(40, 69, 106, 0.32);
+    stroke-dasharray: 5 7;
+  }
+
+  .rework-lane {
+    stroke: rgba(181, 91, 63, 0.42);
+    stroke-dasharray: 5 8;
+  }
+
+  .label,
+  .regime-label {
+    fill: rgba(28, 33, 41, 0.88);
+    font-size: 14px;
+    font-family: "Inter", "Segoe UI", sans-serif;
+  }
+
+  .regime-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .label-a {
+    animation: showA 6.4s ease-in-out infinite;
+  }
+
+  .label-b {
+    animation: showB 6.4s ease-in-out infinite;
+  }
+
+  .annotation {
+    fill: rgba(92, 96, 102, 0.8);
+    font-size: 12px;
+    font-family: "Inter", "Segoe UI", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .token.warm {
+    fill: #c07f3b;
+    filter: drop-shadow(0 0 10px rgba(192, 127, 59, 0.22));
+  }
+
+  .token.cool {
+    fill: #385e90;
+    filter: drop-shadow(0 0 10px rgba(56, 94, 144, 0.16));
+  }
+
+  .token.danger {
+    fill: #b55b3f;
+    filter: drop-shadow(0 0 10px rgba(181, 91, 63, 0.22));
+  }
+
+  .regime-a {
+    animation: showA 6.4s ease-in-out infinite;
+  }
+
+  .regime-b {
+    animation: showB 6.4s ease-in-out infinite;
+  }
+
+  @keyframes showA {
+    0%, 44% {
+      opacity: 1;
+    }
+
+    50%, 100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes showB {
+    0%, 44% {
+      opacity: 0;
+    }
+
+    50%, 94% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+</style>
