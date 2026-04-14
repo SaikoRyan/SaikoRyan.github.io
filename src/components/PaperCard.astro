@@ -1,15 +1,20 @@
 ---
-const { paper } = Astro.props;
+const { paper, index } = Astro.props;
 ---
 
 <article class="paper-card">
-  <p class="paper-meta">{paper.venue}</p>
-  <h2>
-    <a href={paper.href} target="_blank" rel="noreferrer">
-      {paper.title}
-    </a>
-  </h2>
-  <p class="paper-authors">{paper.authors}</p>
-  <p class="paper-insight">{paper.insightTitle}</p>
-  <p class="paper-caption">{paper.caption}</p>
+  <div class="paper-index-block">
+    <p class="paper-index">{String(index + 1).padStart(2, "0")}</p>
+  </div>
+  <div class="paper-content">
+    <p class="paper-meta">{paper.venue}</p>
+    <h2>
+      <a href={paper.href} target="_blank" rel="noreferrer">
+        {paper.title}
+      </a>
+    </h2>
+    <p class="paper-authors">{paper.authors}</p>
+    <p class="paper-insight">{paper.insightTitle}</p>
+    <p class="paper-caption">{paper.caption}</p>
+  </div>
 </article>
