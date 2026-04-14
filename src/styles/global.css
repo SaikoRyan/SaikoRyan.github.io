@@ -103,8 +103,7 @@ a:hover {
 
 .hero-kicker,
 .section-heading p,
-.paper-meta,
-.teaching-years {
+.paper-meta {
   margin: 0;
   color: var(--muted);
   font-size: 0.92rem;
@@ -121,13 +120,8 @@ a:hover {
 }
 
 .hero-role {
-  margin: 1.1rem 0 0;
+  margin: 1.1rem 0 0.1rem;
   font-size: 1.2rem;
-}
-
-.hero-meta {
-  margin: 0.45rem 0 0;
-  color: var(--muted);
 }
 
 .hero-intro {
@@ -159,37 +153,18 @@ a:hover {
 }
 
 .prose p,
-.theme p,
 .paper-authors,
 .paper-summary,
-.teaching-item p,
 .contact-card p {
   margin: 0;
 }
 
 .prose p + p,
-.theme p + p,
 .contact-card p + p {
   margin-top: 1rem;
 }
 
-.theme-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.theme {
-  padding: 1.2rem 1.15rem 1.1rem;
-  border: 1px solid var(--line);
-  background: var(--bg-soft);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(8px);
-}
-
-.theme h2,
-.paper h2,
-.teaching-item h2 {
+.paper h2 {
   margin: 0 0 0.55rem;
   font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
   font-size: 1.4rem;
@@ -222,21 +197,8 @@ a:hover {
   margin-top: 0.8rem;
 }
 
-.teaching-list {
-  display: grid;
-  gap: 1rem;
-}
-
-.teaching-item {
-  padding: 1rem 1.15rem;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.42);
-}
-
 .contact-card {
-  padding: 1.2rem 1.25rem;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.42);
+  max-width: 32rem;
 }
 
 @media (max-width: 820px) {
@@ -263,7 +225,7 @@ a:hover {
     margin-bottom: 1rem;
   }
 
-  .theme-grid {
-    grid-template-columns: 1fr;
+  .hero-intro {
+    width: 100%;
   }
 }

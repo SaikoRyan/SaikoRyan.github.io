@@ -6,40 +6,24 @@ export const siteMeta = {
 
 export const profile = {
   name: "Ruihan Lin",
-  role: "PhD Candidate in Industrial Engineering and Decision Analytics",
+  role: "PhD Candidate at HKUST",
   institution: "Hong Kong University of Science and Technology",
   email: "rlinah@connect.ust.hk",
-  advisor: "Jiheng Zhang",
-  graduation: "Expected 2026",
   intro:
-    "I study stochastic systems and the interface between AI and operations research, with a current focus on LLM systems, resource allocation, and human-AI workflows.",
+    "I work at the intersection of stochastic systems, operations research, and AI, with recent projects on LLM systems, resource allocation, and human-AI workflows.",
   bio: [
-    "My research combines queueing-inspired modeling, stochastic control, and optimization to understand how modern AI systems should be designed and operated under uncertainty.",
-    "I am especially interested in two directions: using operations research to analyze and optimize LLM infrastructure, and using AI tools to support better optimization and decision-making."
+    "I am a PhD candidate in Industrial Engineering and Decision Analytics at the Hong Kong University of Science and Technology. My work uses queueing, stochastic control, and optimization to study how complex service and decision systems behave under uncertainty.",
+    "Much of my recent research is motivated by AI systems, especially large-scale LLM inference and human-AI workflows. More broadly, I am interested in building analytical models that connect modern computational systems with classical operations research ideas."
   ],
   links: [
     { label: "Email", href: "mailto:rlinah@connect.ust.hk" },
-    { label: "HKUST", href: "https://hkust.edu.hk/" },
-    { label: "Research", href: "#papers" }
+    { label: "Papers", href: "#papers" }
   ]
 };
 
-export const researchThemes = [
-  {
-    title: "OR for AI",
-    description:
-      "I build stochastic and queueing-based models for LLM inference, AI service systems, and congestion-aware resource allocation."
-  },
-  {
-    title: "AI for OR",
-    description:
-      "I study how generative AI and learning-based methods can improve optimization workflows and decision support."
-  },
-  {
-    title: "Stochastic Systems",
-    description:
-      "I am interested in dynamic control, service systems, and large-scale operational design under uncertainty."
-  }
+export const research = [
+  "My research is broadly about how to model, analyze, and optimize systems with congestion, uncertainty, and strategic allocation of limited resources. I am especially drawn to problems where analytical structure can still offer useful guidance for modern computational systems.",
+  "One current direction studies AI infrastructure through an operations lens, including LLM inference systems and AI-human workflows. Another direction looks at how learning-based methods and generative AI can support optimization and decision-making without losing rigor."
 ];
 
 export const papers = [
@@ -69,18 +53,5 @@ export const papers = [
     href: "https://arxiv.org/abs/2603.13870",
     summary:
       "Analyzes how LLM judges should be allocated in human-AI workflows when screening capacity is scarce and bottlenecks shift over time."
-  }
-];
-
-export const teaching = [
-  {
-    role: "Teaching Assistant Coordinator",
-    org: "Postgraduate Programs, HKUST",
-    years: "2023-2024"
-  },
-  {
-    role: "Teaching Assistant",
-    org: "Foundations of FinTech, Blockchain and Financial Technologies, Statistics for Engineers",
-    years: "2022-2025"
   }
 ];
