@@ -9,11 +9,15 @@ export const profile = {
   role: "PhD Candidate at HKUST",
   institution: "Hong Kong University of Science and Technology",
   email: "rlinah@connect.ust.hk",
+  advisor: {
+    name: "Jiheng Zhang",
+    href: "https://facultyprofiles.hkust.edu.hk/profiles.php?profile=jiheng-zhang-jiheng"
+  },
   intro:
     "I work at the intersection of stochastic systems, operations research, and AI, with recent projects on LLM systems, resource allocation, and human-AI workflows.",
   bio: [
     "I am a PhD candidate in Industrial Engineering and Decision Analytics at the Hong Kong University of Science and Technology. My work uses queueing, stochastic control, and optimization to study how complex service and decision systems behave under uncertainty.",
-    "Much of my recent research is motivated by AI systems, especially large-scale LLM inference and human-AI workflows. More broadly, I am interested in building analytical models that connect modern computational systems with classical operations research ideas."
+    "Much of my recent research is motivated by AI systems, especially large-scale LLM inference and human-AI workflows. More broadly, I am interested in dynamic pricing, revenue management, and how financial constraints shape firms' operating and business decisions."
   ],
   links: [
     { label: "Email", href: "mailto:rlinah@connect.ust.hk" },

@@ -20,6 +20,9 @@ import { profile, research, papers, siteMeta } from "../data/site";
         <p class="hero-kicker">Academic Homepage</p>
         <h1>{profile.name}</h1>
         <p class="hero-role">{profile.role}</p>
+        <p class="hero-meta">
+          Advised by <a href={profile.advisor.href} target="_blank" rel="noreferrer">{profile.advisor.name}</a>
+        </p>
         <p class="hero-intro">{profile.intro}</p>
 
         <div class="hero-links">

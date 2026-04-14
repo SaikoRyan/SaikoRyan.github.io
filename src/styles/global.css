@@ -124,6 +124,11 @@ a:hover {
   font-size: 1.2rem;
 }
 
+.hero-meta {
+  margin: 0.1rem 0 0;
+  color: var(--muted);
+}
+
 .hero-intro {
   width: min(100%, 44rem);
   margin: 1.5rem 0 0;
