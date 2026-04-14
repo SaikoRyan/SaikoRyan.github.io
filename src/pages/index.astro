@@ -1,0 +1,114 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { profile, researchThemes, papers, teaching, siteMeta } from "../data/site";
+---
+
+<BaseLayout title={siteMeta.title} description={siteMeta.description}>
+  <main class="page-shell">
+    <header class="hero" id="top">
+      <div class="hero-nav">
+        <span class="hero-mark">Ruihan Lin</span>
+        <nav aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#themes">Research</a>
+          <a href="#papers">Papers</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+
+      <div class="hero-copy">
+        <p class="hero-kicker">Academic Homepage</p>
+        <h1>{profile.name}</h1>
+        <p class="hero-role">{profile.role}</p>
+        <p class="hero-meta">
+          {profile.institution}
+          <span aria-hidden="true"> / </span>
+          Advisor: {profile.advisor}
+          <span aria-hidden="true"> / </span>
+          {profile.graduation}
+        </p>
+        <p class="hero-intro">{profile.intro}</p>
+
+        <div class="hero-links">
+          {profile.links.map((link) => (
+            <a href={link.href}>{link.label}</a>
+          ))}
+        </div>
+      </div>
+    </header>
+
+    <section class="section" id="about">
+      <div class="section-heading">
+        <p>About</p>
+      </div>
+      <div class="section-body prose">
+        {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </section>
+
+    <section class="section" id="themes">
+      <div class="section-heading">
+        <p>Research Themes</p>
+      </div>
+      <div class="section-body theme-grid">
+        {researchThemes.map((theme) => (
+          <article class="theme">
+            <h2>{theme.title}</h2>
+            <p>{theme.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section" id="papers">
+      <div class="section-heading">
+        <p>Selected Papers</p>
+      </div>
+      <div class="section-body paper-list">
+        {papers.map((paper) => (
+          <article class="paper">
+            <p class="paper-meta">{paper.venue}</p>
+            <h2>
+              <a href={paper.href} target="_blank" rel="noreferrer">
+                {paper.title}
+              </a>
+            </h2>
+            <p class="paper-authors">{paper.authors}</p>
+            <p class="paper-summary">{paper.summary}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section" id="teaching">
+      <div class="section-heading">
+        <p>Teaching</p>
+      </div>
+      <div class="section-body teaching-list">
+        {teaching.map((item) => (
+          <article class="teaching-item">
+            <h2>{item.role}</h2>
+            <p>{item.org}</p>
+            <p class="teaching-years">{item.years}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="section-heading">
+        <p>Contact</p>
+      </div>
+      <div class="section-body contact-card">
+        <p>
+          For research discussions, collaborations, or academic opportunities,
+          feel free to reach out.
+        </p>
+        <p>
+          <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        </p>
+        <p>{profile.institution}</p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
