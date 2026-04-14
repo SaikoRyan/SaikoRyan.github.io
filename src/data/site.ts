@@ -17,7 +17,7 @@ export const profile = {
     "I work at the intersection of stochastic systems, operations research, and AI, with recent projects on LLM systems, resource allocation, and human-AI workflows.",
   bio: [
     "I am a PhD candidate in Industrial Engineering and Decision Analytics at the Hong Kong University of Science and Technology. My work uses queueing, stochastic control, and optimization to study how complex service and decision systems behave under uncertainty.",
-    "Much of my recent research is motivated by AI systems, especially large-scale LLM inference and human-AI workflows. More broadly, I am interested in dynamic pricing, revenue management, and how financial constraints shape firms' operating and business decisions."
+    "Much of my recent research is motivated by AI systems, especially large-scale LLM inference and human-AI workflows. Another research direction studies dynamic pricing, revenue management, and how financial constraints shape firms' operating and business decisions."
   ],
   links: [
     { label: "Email", href: "mailto:rlinah@connect.ust.hk" },
@@ -27,7 +27,7 @@ export const profile = {
 
 export const research = [
   "My research is broadly about how to model, analyze, and optimize systems with congestion, uncertainty, and strategic allocation of limited resources. I am especially drawn to problems where analytical structure can still offer useful guidance for modern computational systems.",
-  "One current direction studies AI infrastructure through an operations lens, including LLM inference systems and AI-human workflows. Another direction looks at how learning-based methods and generative AI can support optimization and decision-making without losing rigor."
+  "One current direction studies AI infrastructure through an operations lens, including LLM inference systems and AI-human workflows. Another research direction focuses on dynamic pricing, revenue management, and the role of financial constraints in shaping operational and business decisions."
 ];
 
 export const papers = [
