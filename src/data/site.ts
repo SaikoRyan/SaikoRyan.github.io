@@ -37,13 +37,6 @@ export const papers = [
     authors: "Ruihan Lin, Zean Han, Zezhen Ding, and Jiheng Zhang",
     venue: "Major revision, Management Science",
     href: "https://arxiv.org/abs/2602.02987",
-    figures: [
-      {
-        id: "llmqueue-diagram",
-        kind: "Architecture",
-        caption: "Shared GPUs create contention between prefill and decode, so control has to shape flow before queues build up."
-      }
-    ],
     insightTitle: "Gate-and-route turns contention into controlled flow.",
     caption:
       "When prefill and decode compete for shared GPUs, adaptive admission and routing recover stability."
@@ -54,18 +47,6 @@ export const papers = [
     authors: "Ruihan Lin, Yunrui Ling, and Jiheng Zhang",
     venue: "Under review, Management Science",
     href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6237799",
-    figures: [
-      {
-        id: "rbf-mechanism",
-        kind: "Mechanism",
-        caption: "Pricing decisions feed into demand, revenue sharing, and the remaining repayment cap."
-      },
-      {
-        id: "rbf-conclusion",
-        kind: "Result",
-        caption: "The distortion is strongest in the middle and fades as the horizon grows."
-      }
-    ],
     insightTitle: "The distortion peaks in the middle, then fades over time.",
     caption:
       "RBF creates a non-monotone pricing distortion, yet the repayment cap acts as a safety valve in the long run."
@@ -76,13 +57,6 @@ export const papers = [
     authors: "Ruihan Lin and Jiheng Zhang",
     venue: "Under review, Operations Research",
     href: "https://arxiv.org/abs/2603.13870",
-    figures: [
-      {
-        id: "multiagent-diagram",
-        kind: "Architecture",
-        caption: "The system can screen with judges, bypass to humans, or send work back for rework depending on the bottleneck."
-      }
-    ],
     insightTitle: "Whether to screen depends on where the bottleneck sits.",
     caption:
       "Judges amplify scarce human review only in the right regime; otherwise they can create a rework trap."

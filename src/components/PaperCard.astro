@@ -1,17 +1,5 @@
 ---
-import LlmQueueDiagram from "./figures/LlmQueueDiagram.astro";
-import RbfMechanismDiagram from "./figures/RbfMechanismDiagram.astro";
-import RbfConclusionDiagram from "./figures/RbfConclusionDiagram.astro";
-import MultiAgentDiagram from "./figures/MultiAgentDiagram.astro";
-
 const { paper, index } = Astro.props;
-
-const figureMap = {
-  "llmqueue-diagram": LlmQueueDiagram,
-  "rbf-mechanism": RbfMechanismDiagram,
-  "rbf-conclusion": RbfConclusionDiagram,
-  "multiagent-diagram": MultiAgentDiagram
-};
 ---
 
 <article class="paper-card">
@@ -19,34 +7,17 @@ const figureMap = {
     <p class="paper-index">{String(index + 1).padStart(2, "0")}</p>
   </div>
   <div class="paper-content">
-    <p class="paper-meta">{paper.venue}</p>
+    <p class="paper-meta">
+      <span class:list={{ "paper-meta-strong": paper.venue.includes("Major revision") }}>
+        {paper.venue}
+      </span>
+    </p>
     <h2>
       <a href={paper.href} target="_blank" rel="noreferrer">
         {paper.title}
       </a>
     </h2>
     <p class="paper-authors">{paper.authors}</p>
-    <div
-      class="paper-figures"
-      data-count={paper.figures.length}
-      aria-label="Selected figures from the paper"
-    >
-      {paper.figures.map((figure) => {
-        const FigureComponent = figureMap[figure.id];
-
-        return (
-          <figure class="paper-figure">
-            <div class="paper-figure-frame">
-              {FigureComponent && <FigureComponent />}
-            </div>
-            <figcaption>
-              <span class="paper-figure-kind">{figure.kind}</span>
-              <span class="paper-figure-caption">{figure.caption}</span>
-            </figcaption>
-          </figure>
-        );
-      })}
-    </div>
     <p class="paper-insight">{paper.insightTitle}</p>
     <p class="paper-caption">{paper.caption}</p>
   </div>
