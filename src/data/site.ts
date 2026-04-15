@@ -37,6 +37,20 @@ export const papers = [
     authors: "Ruihan Lin, Zean Han, Zezhen Ding, and Jiheng Zhang",
     venue: "Major revision, Management Science",
     href: "https://arxiv.org/abs/2602.02987",
+    figures: [
+      {
+        src: "/papers/llmqueue/structure.png",
+        alt: "System diagram of multiclass LLM inference with prefill buffer, decode buffer, and mixed versus solo GPU states.",
+        kind: "Mechanism",
+        caption: "System structure with prefill-decode contention."
+      },
+      {
+        src: "/papers/llmqueue/comparison.png",
+        alt: "Benchmark comparison showing normalized revenue over time, with GG-SP outperforming baseline scheduling heuristics.",
+        kind: "Result",
+        caption: "Revenue comparison against serving baselines."
+      }
+    ],
     insightTitle: "Gate-and-route turns contention into controlled flow.",
     caption:
       "When prefill and decode compete for shared GPUs, adaptive admission and routing recover stability."
@@ -47,6 +61,20 @@ export const papers = [
     authors: "Ruihan Lin, Yunrui Ling, and Jiheng Zhang",
     venue: "Under review, Management Science",
     href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6237799",
+    figures: [
+      {
+        src: "/papers/rbf/trajectories.png",
+        alt: "Price trajectories under debt, revenue-based financing, and equity benchmarks over short and long horizons.",
+        kind: "Mechanism",
+        caption: "Dynamic price paths under debt, RBF, and equity."
+      },
+      {
+        src: "/papers/rbf/policy-loss.png",
+        alt: "Policy loss and price distortion curves over remaining balance, showing non-monotone distortion with the strongest effect in intermediate debt regions.",
+        kind: "Result",
+        caption: "Local inefficiency is concentrated in the middle."
+      }
+    ],
     insightTitle: "The distortion peaks in the middle, then fades over time.",
     caption:
       "RBF creates a non-monotone pricing distortion, yet the repayment cap acts as a safety valve in the long run."
@@ -57,6 +85,20 @@ export const papers = [
     authors: "Ruihan Lin and Jiheng Zhang",
     venue: "Under review, Operations Research",
     href: "https://arxiv.org/abs/2603.13870",
+    figures: [
+      {
+        src: "/papers/multiagent/network.png",
+        alt: "Queueing network for AI workers, router, LLM judges, human review, and rework loop.",
+        kind: "Mechanism",
+        caption: "AI output can be screened, reviewed, or sent back for rework."
+      },
+      {
+        src: "/papers/multiagent/thresholds.png",
+        alt: "Judge and worker utilization across human capacity, showing regime changes and class priority reversal.",
+        kind: "Result",
+        caption: "Optimal allocation changes across operating regimes."
+      }
+    ],
     insightTitle: "Whether to screen depends on where the bottleneck sits.",
     caption:
       "Judges amplify scarce human review only in the right regime; otherwise they can create a rework trap."

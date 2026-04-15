@@ -14,6 +14,19 @@ const { paper, index } = Astro.props;
       </a>
     </h2>
     <p class="paper-authors">{paper.authors}</p>
+    <div class="paper-figures" aria-label="Selected figures from the paper">
+      {paper.figures.map((figure) => (
+        <figure class="paper-figure">
+          <div class="paper-figure-frame">
+            <img src={figure.src} alt={figure.alt} loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="paper-figure-kind">{figure.kind}</span>
+            <span class="paper-figure-caption">{figure.caption}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
     <p class="paper-insight">{paper.insightTitle}</p>
     <p class="paper-caption">{paper.caption}</p>
   </div>

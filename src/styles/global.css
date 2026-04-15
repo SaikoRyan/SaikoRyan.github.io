@@ -238,6 +238,47 @@ a:hover {
   font-size: 0.96rem;
 }
 
+.paper-figures {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.3rem;
+}
+
+.paper-figure {
+  margin: 0;
+}
+
+.paper-figure-frame {
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+  background: rgba(255, 255, 255, 0.32);
+}
+
+.paper-figure-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.paper-figure figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.45rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.paper-figure-kind {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.paper-figure-caption {
+  color: rgba(94, 92, 88, 0.92);
+}
+
 .paper-insight {
   margin: 1.15rem 0 0;
   font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
