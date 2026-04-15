@@ -1,0 +1,136 @@
+<svg
+  viewBox="0 0 640 300"
+  role="img"
+  aria-labelledby="rbf-mechanism-title rbf-mechanism-desc"
+  class="diagram rbf-mechanism"
+>
+  <title id="rbf-mechanism-title">Revenue-based financing mechanism diagram</title>
+  <desc id="rbf-mechanism-desc">
+    Pricing, market response, revenue sharing, and the remaining cap form a feedback loop.
+  </desc>
+
+  <defs>
+    <linearGradient id="rbf-mechanism-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbf8f2" />
+      <stop offset="100%" stop-color="#ece4d8" />
+    </linearGradient>
+    <marker
+      id="rbf-mechanism-arrow"
+      viewBox="0 0 10 10"
+      refX="8"
+      refY="5"
+      markerWidth="7"
+      markerHeight="7"
+      orient="auto-start-reverse"
+    >
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)" opacity="0.65"></path>
+    </marker>
+  </defs>
+
+  <rect x="12" y="12" width="616" height="276" rx="28" class="panel"></rect>
+  <circle cx="320" cy="150" r="92" class="ring"></circle>
+
+  <g class="flow-loop">
+    <path d="M208 100 C238 68, 292 52, 342 58" marker-end="url(#rbf-mechanism-arrow)"></path>
+    <path d="M430 90 C468 106, 494 138, 492 182" marker-end="url(#rbf-mechanism-arrow)"></path>
+    <path d="M430 216 C392 240, 340 250, 282 238" marker-end="url(#rbf-mechanism-arrow)"></path>
+    <path d="M194 206 C154 186, 140 148, 152 104" marker-end="url(#rbf-mechanism-arrow)"></path>
+  </g>
+
+  <g class="node soft">
+    <rect x="148" y="80" width="116" height="52" rx="20"></rect>
+    <text x="206" y="103">pricing</text>
+    <text x="206" y="121" class="sub">raise or temper</text>
+  </g>
+
+  <g class="node warm">
+    <rect x="374" y="72" width="126" height="56" rx="20"></rect>
+    <text x="437" y="97">market response</text>
+    <text x="437" y="117" class="sub">demand shifts</text>
+  </g>
+
+  <g class="node blue">
+    <rect x="372" y="176" width="132" height="58" rx="20"></rect>
+    <text x="438" y="201">revenue sharing</text>
+    <text x="438" y="221" class="sub">cash outflow today</text>
+  </g>
+
+  <g class="node cap">
+    <rect x="140" y="176" width="140" height="58" rx="20"></rect>
+    <text x="210" y="201">remaining cap</text>
+    <text x="210" y="221" class="sub">state variable</text>
+  </g>
+
+  <g class="center-copy">
+    <text x="320" y="145">feedback loop</text>
+    <text x="320" y="166" class="sub-center">short-run distortion, long-run release</text>
+  </g>
+</svg>
+
+<style>
+  .diagram {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .panel {
+    fill: url(#rbf-mechanism-bg);
+    stroke: rgba(43, 69, 101, 0.1);
+    stroke-width: 1;
+  }
+
+  .ring {
+    fill: rgba(255, 255, 255, 0.28);
+    stroke: rgba(43, 69, 101, 0.07);
+    stroke-width: 1;
+  }
+
+  .flow-loop path {
+    fill: none;
+    stroke: rgba(43, 69, 101, 0.52);
+    stroke-width: 1.7;
+    stroke-linecap: round;
+  }
+
+  .node rect {
+    stroke-width: 1;
+  }
+
+  .node text,
+  .center-copy text {
+    fill: var(--accent);
+    font-family: "Inter", "Segoe UI", sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    text-anchor: middle;
+  }
+
+  .node .sub,
+  .center-copy .sub-center {
+    fill: rgba(29, 33, 39, 0.68);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .soft rect {
+    fill: rgba(255, 255, 255, 0.72);
+    stroke: rgba(43, 69, 101, 0.12);
+  }
+
+  .warm rect {
+    fill: rgba(201, 178, 145, 0.2);
+    stroke: rgba(166, 126, 79, 0.22);
+  }
+
+  .blue rect {
+    fill: rgba(43, 69, 101, 0.12);
+    stroke: rgba(43, 69, 101, 0.18);
+  }
+
+  .cap rect {
+    fill: rgba(237, 231, 220, 0.82);
+    stroke: rgba(43, 69, 101, 0.15);
+  }
+</style>

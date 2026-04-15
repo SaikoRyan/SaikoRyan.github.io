@@ -1,0 +1,124 @@
+<svg
+  viewBox="0 0 640 300"
+  role="img"
+  aria-labelledby="rbf-conclusion-title rbf-conclusion-desc"
+  class="diagram rbf-conclusion"
+>
+  <title id="rbf-conclusion-title">Revenue-based financing conclusion diagram</title>
+  <desc id="rbf-conclusion-desc">
+    Local inefficiency rises to a hump in the middle, while long-run instability fades.
+  </desc>
+
+  <defs>
+    <linearGradient id="rbf-conclusion-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fcf9f3" />
+      <stop offset="100%" stop-color="#efe7dc" />
+    </linearGradient>
+    <linearGradient id="rbf-conclusion-fade" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(43,69,101,0.52)" />
+      <stop offset="100%" stop-color="rgba(43,69,101,0.08)" />
+    </linearGradient>
+  </defs>
+
+  <rect x="12" y="12" width="616" height="276" rx="28" class="panel"></rect>
+  <rect x="226" y="54" width="146" height="184" rx="22" class="focus-band"></rect>
+
+  <g class="axes">
+    <line x1="92" y1="232" x2="548" y2="232"></line>
+    <line x1="108" y1="228" x2="108" y2="72"></line>
+  </g>
+
+  <g class="zone-labels">
+    <text x="162" y="52">low balance</text>
+    <text x="300" y="52">middle pressure</text>
+    <text x="458" y="52">long horizon</text>
+  </g>
+
+  <path
+    d="M108 208 C154 198, 198 164, 232 128 C254 104, 276 92, 300 92 C330 92, 356 120, 382 150 C414 186, 456 204, 548 210"
+    class="main-curve"
+  ></path>
+
+  <path
+    d="M108 116 C160 128, 212 136, 264 146 C320 156, 390 164, 456 172 C496 176, 522 180, 548 184"
+    class="secondary-curve"
+  ></path>
+
+  <g class="curve-copy">
+    <text x="348" y="108">local inefficiency</text>
+    <text x="438" y="162">global instability dissipates</text>
+  </g>
+
+  <g class="axis-copy">
+    <text x="548" y="252">debt / remaining balance</text>
+    <text x="74" y="84">distortion</text>
+  </g>
+</svg>
+
+<style>
+  .diagram {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .panel {
+    fill: url(#rbf-conclusion-bg);
+    stroke: rgba(43, 69, 101, 0.1);
+    stroke-width: 1;
+  }
+
+  .focus-band {
+    fill: rgba(196, 174, 139, 0.14);
+    stroke: rgba(166, 126, 79, 0.12);
+    stroke-width: 1;
+  }
+
+  .axes line {
+    stroke: rgba(43, 69, 101, 0.24);
+    stroke-width: 1.1;
+  }
+
+  .main-curve,
+  .secondary-curve {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .main-curve {
+    stroke: var(--accent);
+    stroke-width: 3;
+  }
+
+  .secondary-curve {
+    stroke: url(#rbf-conclusion-fade);
+    stroke-width: 2.2;
+    stroke-dasharray: 4 6;
+  }
+
+  .zone-labels text,
+  .axis-copy text {
+    fill: rgba(29, 33, 39, 0.62);
+    font-family: "Inter", "Segoe UI", sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .zone-labels text {
+    text-anchor: middle;
+  }
+
+  .axis-copy text:last-child {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    transform-origin: center;
+  }
+
+  .curve-copy text {
+    fill: var(--accent);
+    font-family: "Iowan Old Style", Georgia, serif;
+    font-size: 18px;
+  }
+</style>

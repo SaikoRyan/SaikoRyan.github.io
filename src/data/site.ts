@@ -39,16 +39,9 @@ export const papers = [
     href: "https://arxiv.org/abs/2602.02987",
     figures: [
       {
-        src: "/papers/llmqueue/structure.png",
-        alt: "System diagram of multiclass LLM inference with prefill buffer, decode buffer, and mixed versus solo GPU states.",
-        kind: "Mechanism",
-        caption: "System structure with prefill-decode contention."
-      },
-      {
-        src: "/papers/llmqueue/comparison.png",
-        alt: "Benchmark comparison showing normalized revenue over time, with GG-SP outperforming baseline scheduling heuristics.",
-        kind: "Result",
-        caption: "Revenue comparison against serving baselines."
+        id: "llmqueue-diagram",
+        kind: "Architecture",
+        caption: "Shared GPUs create contention between prefill and decode, so control has to shape flow before queues build up."
       }
     ],
     insightTitle: "Gate-and-route turns contention into controlled flow.",
@@ -63,16 +56,14 @@ export const papers = [
     href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6237799",
     figures: [
       {
-        src: "/papers/rbf/trajectories.png",
-        alt: "Price trajectories under debt, revenue-based financing, and equity benchmarks over short and long horizons.",
+        id: "rbf-mechanism",
         kind: "Mechanism",
-        caption: "Dynamic price paths under debt, RBF, and equity."
+        caption: "Pricing decisions feed into demand, revenue sharing, and the remaining repayment cap."
       },
       {
-        src: "/papers/rbf/policy-loss.png",
-        alt: "Policy loss and price distortion curves over remaining balance, showing non-monotone distortion with the strongest effect in intermediate debt regions.",
+        id: "rbf-conclusion",
         kind: "Result",
-        caption: "Local inefficiency is concentrated in the middle."
+        caption: "The distortion is strongest in the middle and fades as the horizon grows."
       }
     ],
     insightTitle: "The distortion peaks in the middle, then fades over time.",
@@ -87,16 +78,9 @@ export const papers = [
     href: "https://arxiv.org/abs/2603.13870",
     figures: [
       {
-        src: "/papers/multiagent/network.png",
-        alt: "Queueing network for AI workers, router, LLM judges, human review, and rework loop.",
-        kind: "Mechanism",
-        caption: "AI output can be screened, reviewed, or sent back for rework."
-      },
-      {
-        src: "/papers/multiagent/thresholds.png",
-        alt: "Judge and worker utilization across human capacity, showing regime changes and class priority reversal.",
-        kind: "Result",
-        caption: "Optimal allocation changes across operating regimes."
+        id: "multiagent-diagram",
+        kind: "Architecture",
+        caption: "The system can screen with judges, bypass to humans, or send work back for rework depending on the bottleneck."
       }
     ],
     insightTitle: "Whether to screen depends on where the bottleneck sits.",

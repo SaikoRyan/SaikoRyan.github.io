@@ -240,8 +240,13 @@ a:hover {
 
 .paper-figures {
   display: grid;
-  gap: 1rem;
-  margin-top: 1.3rem;
+  gap: 1.1rem;
+  margin-top: 1.45rem;
+  max-width: 38rem;
+}
+
+.paper-figures[data-count="2"] {
+  max-width: 34rem;
 }
 
 .paper-figure {
@@ -250,33 +255,45 @@ a:hover {
 
 .paper-figure-frame {
   overflow: hidden;
-  border: 1px solid var(--line-soft);
-  background: rgba(255, 255, 255, 0.32);
+  border: 1px solid rgba(43, 69, 101, 0.07);
+  border-radius: 1.5rem;
+  padding: 0.95rem 1.05rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.18)),
+    rgba(255, 251, 245, 0.46);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 18px 42px rgba(42, 35, 24, 0.035);
 }
 
-.paper-figure-frame img {
+.paper-figures[data-count="1"] .paper-figure-frame {
+  padding: 1rem 1.15rem;
+}
+
+.paper-figure-frame svg {
   display: block;
   width: 100%;
   height: auto;
 }
 
 .paper-figure figcaption {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
-  margin-top: 0.45rem;
+  display: grid;
+  gap: 0.2rem;
+  margin-top: 0.55rem;
   color: var(--muted);
-  font-size: 0.8rem;
+  font-size: 0.77rem;
   line-height: 1.45;
 }
 
 .paper-figure-kind {
-  letter-spacing: 0.12em;
+  color: rgba(43, 69, 101, 0.52);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
 .paper-figure-caption {
-  color: rgba(94, 92, 88, 0.92);
+  color: rgba(94, 92, 88, 0.84);
 }
 
 .paper-insight {
@@ -330,5 +347,16 @@ a:hover {
 
   .paper-index-block {
     padding-top: 0;
+  }
+
+  .paper-figures,
+  .paper-figures[data-count="2"] {
+    max-width: 100%;
+  }
+
+  .paper-figure-frame,
+  .paper-figures[data-count="1"] .paper-figure-frame {
+    padding: 0.8rem 0.85rem;
+    border-radius: 1.2rem;
   }
 }

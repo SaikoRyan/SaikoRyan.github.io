@@ -1,0 +1,143 @@
+<svg
+  viewBox="0 0 640 320"
+  role="img"
+  aria-labelledby="multiagent-title multiagent-desc"
+  class="diagram multiagent-diagram"
+>
+  <title id="multiagent-title">AI-human workflow architecture diagram</title>
+  <desc id="multiagent-desc">
+    Worker output is routed either through a judge or directly to human review, with rework looping back.
+  </desc>
+
+  <defs>
+    <linearGradient id="multiagent-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faf7f0" />
+      <stop offset="100%" stop-color="#ece4d8" />
+    </linearGradient>
+    <marker
+      id="multiagent-arrow"
+      viewBox="0 0 10 10"
+      refX="8"
+      refY="5"
+      markerWidth="7"
+      markerHeight="7"
+      orient="auto-start-reverse"
+    >
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)" opacity="0.65"></path>
+    </marker>
+  </defs>
+
+  <rect x="12" y="12" width="616" height="296" rx="28" class="panel"></rect>
+  <rect x="46" y="86" width="86" height="140" rx="24" class="worker-stack"></rect>
+  <rect x="68" y="110" width="74" height="34" rx="14" class="worker-card"></rect>
+  <rect x="68" y="152" width="74" height="34" rx="14" class="worker-card"></rect>
+  <rect x="68" y="194" width="74" height="34" rx="14" class="worker-card"></rect>
+
+  <circle cx="228" cy="160" r="42" class="router"></circle>
+  <rect x="322" y="78" width="122" height="54" rx="20" class="judge"></rect>
+  <rect x="486" y="70" width="100" height="62" rx="22" class="human"></rect>
+  <rect x="338" y="194" width="128" height="48" rx="20" class="bypass"></rect>
+  <rect x="478" y="184" width="116" height="58" rx="22" class="rework"></rect>
+
+  <g class="labels">
+    <text x="89" y="72">workers</text>
+    <text x="228" y="166">router</text>
+    <text x="383" y="109">judge</text>
+    <text x="536" y="106">human review</text>
+    <text x="402" y="223">bypass lane</text>
+    <text x="536" y="217">rework</text>
+    <text x="350" y="268" class="note">screen or bypass depends on the bottleneck</text>
+  </g>
+
+  <g class="flows">
+    <path d="M142 160 L176 160" marker-end="url(#multiagent-arrow)"></path>
+    <path d="M270 144 C290 130, 302 118, 322 106" marker-end="url(#multiagent-arrow)"></path>
+    <path d="M270 176 C290 190, 312 202, 338 214" marker-end="url(#multiagent-arrow)"></path>
+    <path d="M444 105 L486 101" marker-end="url(#multiagent-arrow)"></path>
+    <path d="M466 218 C488 214, 494 214, 512 214" marker-end="url(#multiagent-arrow)"></path>
+    <path d="M544 132 L544 182" marker-end="url(#multiagent-arrow)"></path>
+    <path d="M478 214 C386 272, 230 278, 132 224" class="soft-flow" marker-end="url(#multiagent-arrow)"></path>
+  </g>
+</svg>
+
+<style>
+  .diagram {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .panel {
+    fill: url(#multiagent-bg);
+    stroke: rgba(43, 69, 101, 0.1);
+    stroke-width: 1;
+  }
+
+  .worker-stack {
+    fill: rgba(255, 255, 255, 0.36);
+    stroke: rgba(43, 69, 101, 0.08);
+    stroke-width: 1;
+  }
+
+  .worker-card,
+  .judge,
+  .human,
+  .bypass,
+  .rework {
+    stroke-width: 1;
+  }
+
+  .worker-card,
+  .bypass {
+    fill: rgba(255, 255, 255, 0.74);
+    stroke: rgba(43, 69, 101, 0.12);
+  }
+
+  .judge {
+    fill: rgba(43, 69, 101, 0.12);
+    stroke: rgba(43, 69, 101, 0.18);
+  }
+
+  .human {
+    fill: rgba(196, 174, 139, 0.22);
+    stroke: rgba(166, 126, 79, 0.22);
+  }
+
+  .rework {
+    fill: rgba(237, 231, 220, 0.84);
+    stroke: rgba(43, 69, 101, 0.14);
+  }
+
+  .router {
+    fill: rgba(255, 255, 255, 0.62);
+    stroke: rgba(43, 69, 101, 0.18);
+    stroke-width: 1.4;
+  }
+
+  .flows path {
+    fill: none;
+    stroke: rgba(43, 69, 101, 0.56);
+    stroke-width: 1.7;
+    stroke-linecap: round;
+  }
+
+  .flows .soft-flow {
+    stroke-dasharray: 5 8;
+    opacity: 0.55;
+  }
+
+  .labels text {
+    fill: var(--accent);
+    font-family: "Inter", "Segoe UI", sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    text-anchor: middle;
+  }
+
+  .labels .note {
+    fill: rgba(29, 33, 39, 0.68);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+</style>
