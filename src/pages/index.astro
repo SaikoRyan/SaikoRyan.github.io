@@ -1,7 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import PaperCard from "../components/PaperCard.astro";
-import { profile, research, papers, siteMeta } from "../data/site";
+import {
+  contact,
+  education,
+  papers,
+  profile,
+  research,
+  researchInterests,
+  siteMeta,
+  teaching
+} from "../data/site";
 ---
 
 <BaseLayout title={siteMeta.title} description={siteMeta.description}>
@@ -12,30 +20,43 @@ import { profile, research, papers, siteMeta } from "../data/site";
         <nav aria-label="Primary">
           <a href="#about">About</a>
           <a href="#research">Research</a>
+          <a href="#education">Education</a>
           <a href="#papers">Papers</a>
+          <a href="#teaching">Teaching</a>
+          <a href="#contact">Contact</a>
         </nav>
       </div>
 
-      <div class="hero-copy">
-        <p class="hero-kicker">Academic Homepage</p>
-        <h1>{profile.name}</h1>
-        <p class="hero-role">{profile.role}</p>
-        <p class="hero-meta">
-          Advised by <a href={profile.advisor.href} target="_blank" rel="noreferrer">{profile.advisor.name}</a>
-        </p>
-        <p class="hero-intro">{profile.intro}</p>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1>{profile.name}</h1>
+          <p class="hero-role">{profile.role}</p>
+          <p class="hero-meta">{profile.institution}</p>
+          <p class="hero-meta">Advised by {profile.advisor}</p>
+          <p class="hero-intro">{profile.intro}</p>
 
-        <div class="hero-links">
-          {profile.links.map((link) => (
-            <a href={link.href}>{link.label}</a>
-          ))}
+          <div class="hero-links">
+            {profile.links.map((link) => (
+              <a href={link.href}>{link.label}</a>
+            ))}
+          </div>
+        </div>
+
+        <div class="hero-photo-wrap">
+          <img
+            class="hero-photo"
+            src={profile.photo}
+            alt={`Portrait of ${profile.name}`}
+            width="320"
+            height="400"
+          />
         </div>
       </div>
     </header>
 
     <section class="section" id="about">
       <div class="section-heading">
-        <p>About</p>
+        <p>About Me</p>
       </div>
       <div class="section-body prose">
         {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
@@ -44,21 +65,87 @@ import { profile, research, papers, siteMeta } from "../data/site";
 
     <section class="section" id="research">
       <div class="section-heading">
-        <p>Research</p>
+        <p>Research Interest</p>
       </div>
       <div class="section-body prose">
-        {research.map((paragraph) => <p>{paragraph}</p>)}
+        <ul class="interest-list">
+          {researchInterests.map((item) => <li>{item}</li>)}
+        </ul>
+        {research.summary.map((paragraph) => <p>{paragraph}</p>)}
       </div>
     </section>
 
-    <section class="section section-papers" id="papers">
+    <section class="section" id="education">
       <div class="section-heading">
-        <p>Selected Papers</p>
+        <p>Education</p>
       </div>
-      <div class="section-body paper-list">
-        {papers.map((paper, index) => (
-          <PaperCard paper={paper} index={index} />
+      <div class="section-body entry-list">
+        {education.map((entry) => (
+          <article class="entry-card">
+            <div class="entry-header">
+              <h2>{entry.school}</h2>
+              <p class="entry-period">{entry.period}</p>
+            </div>
+            <p class="entry-title">{entry.degree}</p>
+            {entry.details.length > 0 && (
+              <ul class="entry-details">
+                {entry.details.map((detail) => <li>{detail}</li>)}
+              </ul>
+            )}
+          </article>
         ))}
+      </div>
+    </section>
+
+    <section class="section" id="papers">
+      <div class="section-heading">
+        <p>Publications</p>
+      </div>
+      <div class="section-body paper-list-simple">
+        {papers.map((paper) => (
+          <article class="paper-item">
+            <h2>{paper.title}</h2>
+            <p class="paper-authors-simple">{paper.authors}</p>
+            <p class="paper-venue">{paper.venue}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section" id="teaching">
+      <div class="section-heading">
+        <p>Teaching</p>
+      </div>
+      <div class="section-body entry-list">
+        {teaching.map((entry) => (
+          <article class="entry-card">
+            <div class="entry-header">
+              <h2>{entry.title}</h2>
+              <p class="entry-period">{entry.period}</p>
+            </div>
+            <p class="entry-title">{entry.organization}</p>
+            {entry.details.length > 0 && (
+              <ul class="entry-details">
+                {entry.details.map((detail) => <li>{detail}</li>)}
+              </ul>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="section-heading">
+        <p>Contact</p>
+      </div>
+      <div class="section-body prose">
+        <p>{contact.heading}</p>
+        {contact.lines.map((line) => <p>{line}</p>)}
+        <div class="contact-links">
+          {contact.links.map((link) => (
+            <a href={link.href}>{link.label}</a>
+          ))}
+        </div>
       </div>
     </section>
   </main>
