@@ -86,18 +86,21 @@ export const papers = [
     title:
       "Large-Scale LLM Inference with Heterogeneous Workloads: Prefill-Decode Contention and Asymptotically Optimal Control",
     authors: "Ruihan Lin, Zean Han, Zezhen Ding, and Jiheng Zhang",
-    venue: "Major revision, Management Science"
+    venue: "Major revision, Management Science",
+    href: "https://arxiv.org/abs/2602.02987"
   },
   {
     title:
       "Dynamic Pricing under Revenue-Based Financing: Global Stability versus Local Inefficiency",
     authors: "Ruihan Lin, Yunrui Ling, and Jiheng Zhang",
-    venue: "Under review, Management Science"
+    venue: "Under review, Management Science",
+    href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6237799"
   },
   {
     title:
       "When to Screen, When to Bypass: LLM-Judges in Resource-Scarce AI-Human Workflow",
     authors: "Ruihan Lin and Jiheng Zhang",
-    venue: "Under review, Operations Research"
+    venue: "Under review, Operations Research",
+    href: "https://arxiv.org/abs/2603.13870"
   }
 ];

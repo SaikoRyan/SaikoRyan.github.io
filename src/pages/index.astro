@@ -99,12 +99,16 @@ import {
 
     <section class="section" id="papers">
       <div class="section-heading">
-        <p>Publications</p>
+        <p>Working Papers</p>
       </div>
       <div class="section-body paper-list-simple">
         {papers.map((paper) => (
           <article class="paper-item">
-            <h2>{paper.title}</h2>
+            <h2>
+              <a href={paper.href} target="_blank" rel="noreferrer">
+                {paper.title}
+              </a>
+            </h2>
             <p class="paper-authors-simple">{paper.authors}</p>
             <p class="paper-venue">{paper.venue}</p>
           </article>
