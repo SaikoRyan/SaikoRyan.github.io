@@ -93,7 +93,7 @@ export const papers = [
     title:
       "Dynamic Pricing under Revenue-Based Financing: Global Stability versus Local Inefficiency",
     authors: "Ruihan Lin, Yunrui Ling, and Jiheng Zhang",
-    venue: "Under review, Management Science",
+    venue: "Major revision, Management Science",
     href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6237799"
   },
   {
