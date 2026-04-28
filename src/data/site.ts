@@ -102,5 +102,12 @@ export const papers = [
     authors: "Ruihan Lin and Jiheng Zhang",
     venue: "Under review, Operations Research",
     href: "https://arxiv.org/abs/2603.13870"
+  },
+  {
+    title:
+      "Geometry-Aware Offline-to-Online Learning in Linear Contextual Bandits",
+    authors: "Zean Han, Ruihan Lin, Zezhen Ding, and Jiheng Zhang",
+    venue: "arXiv preprint",
+    href: "https://arxiv.org/abs/2604.24016"
   }
 ];
