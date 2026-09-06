@@ -66,10 +66,9 @@ export const teaching = [
 
 export const contact = {
   heading: "Get in touch",
-  lines: [
-    "Email: rlinah@connect.ust.hk",
-    "Hong Kong University of Science and Technology"
-  ],
+  email: "rlinah@connect.ust.hk",
+  institution: "Hong Kong University of Science and Technology",
+  lastUpdated: "Sep 2026",
   links: [{ label: "Top", href: "#top" }]
 };
 
@@ -79,34 +78,49 @@ export const papers = [
       "Large-Scale LLM Inference with Heterogeneous Workloads: Prefill-Decode Contention and Asymptotically Optimal Control",
     authors: "Ruihan Lin, Zean Han, Zezhen Ding, and Jiheng Zhang",
     venue: "Major revision, Management Science",
-    href: "https://arxiv.org/abs/2602.02987"
+    href: "https://arxiv.org/abs/2602.02987",
+    insight:
+      "Prefill and decode compete for the same GPUs; a fluid-LP gate-and-route policy is asymptotically optimal in the many-GPU limit.",
+    keywords: ["queueing networks", "stochastic control", "LLM serving"]
   },
   {
     title:
       "Dynamic Pricing under Revenue-Based Financing: Global Stability versus Local Inefficiency",
     authors: "Ruihan Lin, Yunrui Ling, and Jiheng Zhang",
     venue: "Major revision, Management Science",
-    href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6237799"
+    href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6237799",
+    insight:
+      "Revenue-based financing distorts pricing locally but stabilizes the firm globally, unlike conventional debt.",
+    keywords: ["dynamic pricing", "dynamic programming", "operational finance"]
   },
   {
     title:
       "When to Screen, When to Bypass: LLM-Judges in Resource-Scarce AI-Human Workflow",
     authors: "Ruihan Lin and Jiheng Zhang",
     venue: "Under review, Management Science",
-    href: "https://arxiv.org/abs/2603.13870"
+    href: "https://arxiv.org/abs/2603.13870",
+    insight:
+      "Whether to screen with an imperfect LLM judge depends on where the bottleneck sits; the optimal policy shows phase transitions.",
+    keywords: ["human-AI workflows", "fluid approximation", "resource allocation"]
   },
   {
     title:
       "Direction-Aware Offline-to-Online Learning in Linear Contextual Bandits",
     authors: "Zean Han, Ruihan Lin, Zezhen Ding, and Jiheng Zhang",
     venue: "arXiv preprint",
-    href: "https://arxiv.org/abs/2604.24016"
+    href: "https://arxiv.org/abs/2604.24016",
+    insight:
+      "Uses biased offline data only along directions where it provably helps, avoiding harm from model mismatch.",
+    keywords: ["contextual bandits", "offline-to-online learning"]
   },
   {
     title:
       "Nonparametric Contextual Pricing and Inventory Learning under Censored Demand",
     authors: "Zean Han, Jing Liang, Ruihan Lin, Zezhen Ding, and Jiheng Zhang",
     venue: "arXiv preprint",
-    href: "https://arxiv.org/abs/2608.30944"
+    href: "https://arxiv.org/abs/2608.30944",
+    insight:
+      "A kernel-UCB method learns pricing and stocking jointly from censored sales, with minimax-optimal rates.",
+    keywords: ["nonparametric learning", "pricing and inventory", "censored demand"]
   }
 ];

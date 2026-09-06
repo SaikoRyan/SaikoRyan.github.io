@@ -9,31 +9,40 @@ import {
   siteMeta,
   teaching
 } from "../data/site";
+
+const highlightAuthors = (authors: string) =>
+  authors.replace(
+    /Ruihan Lin/g,
+    '<strong class="self-name">Ruihan Lin</strong>'
+  );
 ---
 
 <BaseLayout title={siteMeta.title} description={siteMeta.description}>
+  <nav class="site-nav" aria-label="Primary">
+    <div class="site-nav-inner">
+      <a class="hero-mark" href="#top">Ruihan Lin</a>
+      <div class="site-nav-links">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#education">Education</a>
+        <a href="#papers">Papers</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
   <main class="page-shell">
     <header class="hero" id="top">
-      <div class="hero-nav">
-        <span class="hero-mark">Ruihan Lin</span>
-        <nav aria-label="Primary">
-          <a href="#about">About</a>
-          <a href="#research">Research</a>
-          <a href="#education">Education</a>
-          <a href="#papers">Papers</a>
-          <a href="#teaching">Teaching</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
-
       <div class="hero-grid">
         <div class="hero-copy">
           <h1>{profile.name}</h1>
-          <p class="hero-role">{profile.role}</p>
-          <p class="hero-meta">{profile.institution}</p>
-          <p class="hero-meta">Advised by {profile.advisor}</p>
           <p class="hero-intro">{profile.intro}</p>
-
+          <div class="hero-meta-stack">
+            <p class="hero-role">{profile.role}</p>
+            <p class="hero-meta">{profile.institution}</p>
+            <p class="hero-meta">Advised by {profile.advisor}</p>
+          </div>
           <div class="hero-links">
             {profile.links.map((link) => (
               <a href={link.href}>{link.label}</a>
@@ -64,7 +73,7 @@ import {
 
     <section class="section" id="research">
       <div class="section-heading">
-        <p>Research Interest</p>
+        <p>Research</p>
       </div>
       <div class="section-body prose">
         <ul class="interest-list">
@@ -99,16 +108,25 @@ import {
       <div class="section-heading">
         <p>Working Papers</p>
       </div>
-      <div class="section-body paper-list-simple">
-        {papers.map((paper) => (
+      <div class="section-body paper-list">
+        {papers.map((paper, index) => (
           <article class="paper-item">
-            <h2>
-              <a href={paper.href} target="_blank" rel="noreferrer">
-                {paper.title}
-              </a>
-            </h2>
-            <p class="paper-authors-simple">{paper.authors}</p>
-            <p class="paper-venue">{paper.venue}</p>
+            <p class="paper-index">{String(index + 1).padStart(2, "0")}</p>
+            <div class="paper-content">
+              <h2>
+                <a href={paper.href} target="_blank" rel="noreferrer">
+                  {paper.title}
+                </a>
+              </h2>
+              <p class="paper-authors" set:html={highlightAuthors(paper.authors)} />
+              <p class="paper-venue">{paper.venue}</p>
+              <p class="paper-insight">{paper.insight}</p>
+              <ul class="paper-keywords">
+                {paper.keywords.map((keyword) => (
+                  <li>{keyword}</li>
+                ))}
+              </ul>
+            </div>
           </article>
         ))}
       </div>
@@ -142,7 +160,10 @@ import {
       </div>
       <div class="section-body prose">
         <p>{contact.heading}</p>
-        {contact.lines.map((line) => <p>{line}</p>)}
+        <p>
+          Email: <a href={`mailto:${contact.email}`}>{contact.email}</a>
+        </p>
+        <p>{contact.institution}</p>
         <div class="contact-links">
           {contact.links.map((link) => (
             <a href={link.href}>{link.label}</a>
@@ -150,5 +171,9 @@ import {
         </div>
       </div>
     </section>
+
+    <footer class="site-footer">
+      <p>Last updated {contact.lastUpdated}</p>
+    </footer>
   </main>
 </BaseLayout>
