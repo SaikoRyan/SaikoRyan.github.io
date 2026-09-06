@@ -1,20 +1,20 @@
 export const siteMeta = {
   title: "Ruihan Lin",
   description:
-    "Academic homepage of Ruihan Lin, a PhD candidate at HKUST working on stochastic systems, AI, operations research, and AI-enabled service systems."
+    "Academic homepage of Ruihan Lin, a PhD candidate at HKUST and incoming postdoctoral researcher at the University of Oxford, working on stochastic systems, AI, and operations research."
 };
 
 export const profile = {
   name: "Ruihan Lin",
   role: "PhD Candidate at HKUST",
-  institution: "Hong Kong University of Science and Technology",
+  institution: "Incoming Postdoctoral Researcher, University of Oxford",
   email: "rlinah@connect.ust.hk",
   photo: "/photo.jpg",
   advisor: "Jiheng Zhang",
   intro:
     "I work at the intersection of stochastic systems, operations research, and AI, with recent projects on LLM systems, resource allocation, dynamic pricing, and human-AI workflows.",
   bio: [
-    "I am a PhD candidate in Industrial Engineering and Decision Analytics at the Hong Kong University of Science and Technology. My work uses queueing, stochastic control, and optimization to study how complex service and decision systems behave under uncertainty.",
+    "I am a PhD candidate in Industrial Engineering and Decision Analytics at the Hong Kong University of Science and Technology, and I will be joining the University of Oxford as a postdoctoral researcher. My work uses queueing, stochastic control, and optimization to study how complex service and decision systems behave under uncertainty.",
     "Before starting my PhD, I studied financial engineering and worked on quantitative trading research."
   ],
   links: [
