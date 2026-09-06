@@ -1,179 +1,112 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import {
-  contact,
-  education,
-  papers,
-  profile,
-  researchInterests,
-  siteMeta,
-  teaching
-} from "../data/site";
-
-const highlightAuthors = (authors: string) =>
-  authors.replace(
-    /Ruihan Lin/g,
-    '<strong class="self-name">Ruihan Lin</strong>'
-  );
+import { education, papers, profile, siteMeta, teaching } from "../data/site";
 ---
 
 <BaseLayout title={siteMeta.title} description={siteMeta.description}>
-  <nav class="site-nav" aria-label="Primary">
-    <div class="site-nav-inner">
-      <a class="hero-mark" href="#top">Ruihan Lin</a>
-      <div class="site-nav-links">
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#education">Education</a>
-        <a href="#papers">Papers</a>
-        <a href="#teaching">Teaching</a>
-        <a href="#contact">Contact</a>
-      </div>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#home">{profile.name}</a>
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#papers">Publications</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+      </ul>
     </div>
   </nav>
 
-  <main class="page-shell">
-    <header class="hero" id="top">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <h1>{profile.name}</h1>
-          <p class="hero-intro">{profile.intro}</p>
-          <div class="hero-meta-stack">
-            <p class="hero-role">{profile.role}</p>
-            <p class="hero-meta">{profile.institution}</p>
-            <p class="hero-meta">Advised by {profile.advisor}</p>
-          </div>
-          <div class="hero-links">
-            {profile.links.map((link) => (
-              <a href={link.href}>{link.label}</a>
-            ))}
-          </div>
-        </div>
-
-        <div class="hero-photo-wrap">
-          <img
-            class="hero-photo"
-            src={profile.photo}
-            alt={`Portrait of ${profile.name}`}
-            width="320"
-            height="400"
-          />
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <div class="profile-image">
+        <img
+          src={profile.photo}
+          alt={`Portrait of ${profile.name}`}
+          width="300"
+          height="400"
+        />
+      </div>
+      <div class="hero-text">
+        <h1>{profile.name}</h1>
+        <p class="title">{profile.role}</p>
+        <p class="affiliation">{profile.institution}</p>
+        <p class="affiliation">{profile.department}</p>
+        <p class="affiliation">Advised by {profile.advisor}</p>
+        <div class="contact-info">
+          <p>
+            Email: <a href={`mailto:${profile.email}`}>{profile.emailDisplay}</a>
+          </p>
         </div>
       </div>
-    </header>
+    </div>
+  </section>
 
-    <section class="section" id="about">
-      <div class="section-heading">
-        <p>About Me</p>
-      </div>
-      <div class="section-body prose">
+  <section class="section" id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <div class="content">
         {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section" id="research">
-      <div class="section-heading">
-        <p>Research</p>
+  <section class="section section-alt" id="papers">
+    <div class="container">
+      <h2>Working Papers</h2>
+      <div class="publications-list">
+        {papers.map((paper) => (
+          <article class="publication-item">
+            <h3>
+              <a href={paper.href} target="_blank" rel="noopener">
+                {paper.title}
+              </a>
+            </h3>
+            <p class="authors">{paper.authors}</p>
+            <p class="venue">{paper.venue}</p>
+            <p class="note">{paper.insight}</p>
+          </article>
+        ))}
       </div>
-      <div class="section-body prose">
-        <ul class="interest-list">
-          {researchInterests.map((item) => <li>{item}</li>)}
-        </ul>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section" id="education">
-      <div class="section-heading">
-        <p>Education</p>
-      </div>
-      <div class="section-body entry-list">
+  <section class="section" id="education">
+    <div class="container">
+      <h2>Education</h2>
+      <div class="entry-list">
         {education.map((entry) => (
-          <article class="entry-card">
-            <div class="entry-header">
-              <h2>{entry.school}</h2>
-              <p class="entry-period">{entry.period}</p>
-            </div>
-            <p class="entry-title">{entry.degree}</p>
-            {entry.details.length > 0 && (
-              <ul class="entry-details">
-                {entry.details.map((detail) => <li>{detail}</li>)}
-              </ul>
-            )}
+          <article class="entry">
+            <p class="entry-degree">
+              {entry.degree}
+              <span class="entry-period">{entry.period}</span>
+            </p>
+            <p class="entry-place">{entry.school}</p>
+            {entry.details.map((detail) => (
+              <p class="entry-detail">{detail}</p>
+            ))}
           </article>
         ))}
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section" id="papers">
-      <div class="section-heading">
-        <p>Working Papers</p>
-      </div>
-      <div class="section-body paper-list">
-        {papers.map((paper, index) => (
-          <article class="paper-item">
-            <p class="paper-index">{String(index + 1).padStart(2, "0")}</p>
-            <div class="paper-content">
-              <h2>
-                <a href={paper.href} target="_blank" rel="noreferrer">
-                  {paper.title}
-                </a>
-              </h2>
-              <p class="paper-authors" set:html={highlightAuthors(paper.authors)} />
-              <p class="paper-venue">{paper.venue}</p>
-              <p class="paper-insight">{paper.insight}</p>
-              <ul class="paper-keywords">
-                {paper.keywords.map((keyword) => (
-                  <li>{keyword}</li>
-                ))}
-              </ul>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="section" id="teaching">
-      <div class="section-heading">
-        <p>Teaching</p>
-      </div>
-      <div class="section-body entry-list">
+  <section class="section section-alt" id="teaching">
+    <div class="container">
+      <h2>Teaching</h2>
+      <div class="entry-list">
         {teaching.map((entry) => (
-          <article class="entry-card">
-            <div class="entry-header">
-              <h2>{entry.title}</h2>
-              <p class="entry-period">{entry.period}</p>
-            </div>
-            <p class="entry-title">{entry.organization}</p>
-            {entry.details.length > 0 && (
-              <ul class="entry-details">
-                {entry.details.map((detail) => <li>{detail}</li>)}
-              </ul>
-            )}
+          <article class="entry">
+            <p class="entry-degree">
+              {entry.title}
+              <span class="entry-period">{entry.period}</span>
+            </p>
+            <p class="entry-place">{entry.organization}</p>
+            {entry.details.map((detail) => (
+              <p class="entry-detail">{detail}</p>
+            ))}
           </article>
         ))}
       </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="section-heading">
-        <p>Contact</p>
-      </div>
-      <div class="section-body prose">
-        <p>{contact.heading}</p>
-        <p>
-          Email: <a href={`mailto:${contact.email}`}>{contact.email}</a>
-        </p>
-        <p>{contact.institution}</p>
-        <div class="contact-links">
-          {contact.links.map((link) => (
-            <a href={link.href}>{link.label}</a>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <footer class="site-footer">
-      <p>Last updated {contact.lastUpdated}</p>
-    </footer>
-  </main>
+    </div>
+  </section>
 </BaseLayout>
