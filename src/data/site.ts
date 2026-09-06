@@ -10,7 +10,6 @@ export const profile = {
   institution: "Incoming Postdoctoral Researcher, University of Oxford",
   department: "Industrial Engineering and Decision Analytics",
   email: "rlinah@connect.ust.hk",
-  emailDisplay: "rlinah [at] connect.ust.hk",
   photo: "/photo.jpg",
   advisor: "Jiheng Zhang",
   bio: [

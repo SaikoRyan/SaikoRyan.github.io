@@ -4,109 +4,76 @@ import { education, papers, profile, siteMeta, teaching } from "../data/site";
 ---
 
 <BaseLayout title={siteMeta.title} description={siteMeta.description}>
-  <nav class="navbar">
-    <div class="nav-inner">
-      <a class="nav-logo" href="#home">{profile.name}</a>
-      <ul class="nav-menu">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#papers">Publications</a></li>
-        <li><a href="#teaching">Teaching</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <section class="hero" id="home">
-    <div class="container hero-content">
-      <div class="profile-image">
-        <img
-          src={profile.photo}
-          alt={`Portrait of ${profile.name}`}
-          width="300"
-          height="400"
-        />
-      </div>
+  <main class="page">
+    <header class="hero" id="home">
       <div class="hero-text">
         <h1>{profile.name}</h1>
-        <p class="title">{profile.role}</p>
-        <p class="affiliation">{profile.institution}</p>
-        <p class="affiliation">{profile.department}</p>
-        <p class="affiliation">Advised by {profile.advisor}</p>
-        <div class="contact-info">
-          <p>
-            Email: <a href={`mailto:${profile.email}`}>{profile.emailDisplay}</a>
-          </p>
-        </div>
+        <p class="role">{profile.role}</p>
+        <p>{profile.institution}</p>
+        <p>{profile.department}</p>
+        <p>Advised by {profile.advisor}</p>
+        <p>
+          Email: <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        </p>
+        <nav aria-label="On this page">
+          <a href="#about">About</a>
+          <a href="#papers">Papers</a>
+          <a href="#education">Education</a>
+          <a href="#teaching">Teaching</a>
+        </nav>
       </div>
-    </div>
-  </section>
+      <img
+        class="photo"
+        src={profile.photo}
+        alt={`Portrait of ${profile.name}`}
+        width="220"
+        height="280"
+      />
+    </header>
 
-  <section class="section" id="about">
-    <div class="container">
-      <h2>About Me</h2>
-      <div class="content">
-        {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
-      </div>
-    </div>
-  </section>
+    <section id="about">
+      <h2>About</h2>
+      {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
+    </section>
 
-  <section class="section section-alt" id="papers">
-    <div class="container">
+    <section id="papers">
       <h2>Working Papers</h2>
-      <div class="publications-list">
-        {papers.map((paper) => (
-          <article class="publication-item">
-            <h3>
-              <a href={paper.href} target="_blank" rel="noopener">
-                {paper.title}
-              </a>
-            </h3>
-            <p class="authors">{paper.authors}</p>
-            <p class="venue">{paper.venue}</p>
-            <p class="note">{paper.insight}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
+      {papers.map((paper) => (
+        <article class="paper">
+          <h3>
+            <a href={paper.href} target="_blank" rel="noopener">
+              {paper.title}
+            </a>
+          </h3>
+          <p class="meta">{paper.authors}</p>
+          <p class="meta">{paper.venue}</p>
+          <p>{paper.insight}</p>
+        </article>
+      ))}
+    </section>
 
-  <section class="section" id="education">
-    <div class="container">
+    <section id="education">
       <h2>Education</h2>
-      <div class="entry-list">
-        {education.map((entry) => (
-          <article class="entry">
-            <p class="entry-degree">
-              {entry.degree}
-              <span class="entry-period">{entry.period}</span>
-            </p>
-            <p class="entry-place">{entry.school}</p>
-            {entry.details.map((detail) => (
-              <p class="entry-detail">{detail}</p>
-            ))}
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
+      {education.map((entry) => (
+        <article class="entry">
+          <p>
+            <strong>{entry.degree}</strong>, {entry.school}, {entry.period}
+          </p>
+          {entry.details.map((detail) => <p class="meta">{detail}</p>)}
+        </article>
+      ))}
+    </section>
 
-  <section class="section section-alt" id="teaching">
-    <div class="container">
+    <section id="teaching">
       <h2>Teaching</h2>
-      <div class="entry-list">
-        {teaching.map((entry) => (
-          <article class="entry">
-            <p class="entry-degree">
-              {entry.title}
-              <span class="entry-period">{entry.period}</span>
-            </p>
-            <p class="entry-place">{entry.organization}</p>
-            {entry.details.map((detail) => (
-              <p class="entry-detail">{detail}</p>
-            ))}
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
+      {teaching.map((entry) => (
+        <article class="entry">
+          <p>
+            <strong>{entry.title}</strong>, {entry.organization}, {entry.period}
+          </p>
+          {entry.details.map((detail) => <p class="meta">{detail}</p>)}
+        </article>
+      ))}
+    </section>
+  </main>
 </BaseLayout>
