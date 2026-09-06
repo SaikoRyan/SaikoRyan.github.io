@@ -92,7 +92,7 @@ export const papers = [
     title:
       "When to Screen, When to Bypass: LLM-Judges in Resource-Scarce AI-Human Workflow",
     authors: "Ruihan Lin and Jiheng Zhang",
-    venue: "Under review, Operations Research",
+    venue: "Under review, Management Science",
     href: "https://arxiv.org/abs/2603.13870"
   },
   {
