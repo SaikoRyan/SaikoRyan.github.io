@@ -4,76 +4,94 @@ import { education, papers, profile, siteMeta, teaching } from "../data/site";
 ---
 
 <BaseLayout title={siteMeta.title} description={siteMeta.description}>
-  <main class="page">
-    <header class="hero" id="home">
-      <div class="hero-text">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="mark" href="#home">{profile.name}</a>
+      <nav aria-label="On this page">
+        <a href="#about">About</a>
+        <a href="#papers">Papers</a>
+        <a href="#education">Education</a>
+        <a href="#teaching">Teaching</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" id="home">
+      <div>
         <h1>{profile.name}</h1>
         <p class="role">{profile.role}</p>
-        <p>{profile.institution}</p>
-        <p>{profile.department}</p>
-        <p>Advised by {profile.advisor}</p>
-        <p>
-          Email: <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        <p class="line">{profile.institution}</p>
+        <p class="line">{profile.department}</p>
+        <p class="line">Advised by {profile.advisor}</p>
+        <p class="email">
+          <a href={`mailto:${profile.email}`}>{profile.email}</a>
         </p>
-        <nav aria-label="On this page">
-          <a href="#about">About</a>
-          <a href="#papers">Papers</a>
-          <a href="#education">Education</a>
-          <a href="#teaching">Teaching</a>
-        </nav>
       </div>
       <img
         class="photo"
         src={profile.photo}
         alt={`Portrait of ${profile.name}`}
-        width="220"
-        height="280"
+        width="260"
+        height="325"
       />
-    </header>
+    </section>
 
-    <section id="about">
+    <section class="block" id="about">
       <h2>About</h2>
-      {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
+      <div class="body">
+        {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
     </section>
 
-    <section id="papers">
+    <section class="block" id="papers">
       <h2>Working Papers</h2>
-      {papers.map((paper) => (
-        <article class="paper">
-          <h3>
-            <a href={paper.href} target="_blank" rel="noopener">
-              {paper.title}
-            </a>
-          </h3>
-          <p class="meta">{paper.authors}</p>
-          <p class="meta">{paper.venue}</p>
-          <p>{paper.insight}</p>
-        </article>
-      ))}
+      <div class="body">
+        {papers.map((paper) => (
+          <article class="paper">
+            <h3>
+              <a href={paper.href} target="_blank" rel="noopener">
+                {paper.title}
+              </a>
+            </h3>
+            <p class="authors">{paper.authors}</p>
+            <p class="venue">{paper.venue}</p>
+            <p class="insight">{paper.insight}</p>
+          </article>
+        ))}
+      </div>
     </section>
 
-    <section id="education">
+    <section class="block" id="education">
       <h2>Education</h2>
-      {education.map((entry) => (
-        <article class="entry">
-          <p>
-            <strong>{entry.degree}</strong>, {entry.school}, {entry.period}
-          </p>
-          {entry.details.map((detail) => <p class="meta">{detail}</p>)}
-        </article>
-      ))}
+      <div class="body">
+        {education.map((entry) => (
+          <article class="record">
+            <div class="record-head">
+              <h3>{entry.degree}</h3>
+              <p class="when">{entry.period}</p>
+            </div>
+            <p class="where">{entry.school}</p>
+            {entry.details.map((detail) => <p class="where">{detail}</p>)}
+          </article>
+        ))}
+      </div>
     </section>
 
-    <section id="teaching">
+    <section class="block" id="teaching">
       <h2>Teaching</h2>
-      {teaching.map((entry) => (
-        <article class="entry">
-          <p>
-            <strong>{entry.title}</strong>, {entry.organization}, {entry.period}
-          </p>
-          {entry.details.map((detail) => <p class="meta">{detail}</p>)}
-        </article>
-      ))}
+      <div class="body">
+        {teaching.map((entry) => (
+          <article class="record">
+            <div class="record-head">
+              <h3>{entry.title}</h3>
+              <p class="when">{entry.period}</p>
+            </div>
+            <p class="where">{entry.organization}</p>
+            {entry.details.map((detail) => <p class="where">{detail}</p>)}
+          </article>
+        ))}
+      </div>
     </section>
   </main>
 </BaseLayout>
