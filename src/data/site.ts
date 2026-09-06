@@ -15,8 +15,7 @@ export const profile = {
     "I work at the intersection of stochastic systems, operations research, and AI, with recent projects on LLM systems, resource allocation, dynamic pricing, and human-AI workflows.",
   bio: [
     "I am a PhD candidate in Industrial Engineering and Decision Analytics at the Hong Kong University of Science and Technology. My work uses queueing, stochastic control, and optimization to study how complex service and decision systems behave under uncertainty.",
-    "Much of my recent research is motivated by AI systems, especially large-scale LLM inference and human-AI workflows. Another research direction studies dynamic pricing, revenue management, and how financial constraints shape firms' operating and business decisions.",
-    "Before starting my PhD, I studied financial engineering and worked on quantitative trading research. I am interested in problems where rigorous modeling can still provide useful structure for modern computational and economic systems."
+    "Before starting my PhD, I studied financial engineering and worked on quantitative trading research."
   ],
   links: [
     { label: "Research", href: "#research" },
@@ -30,13 +29,6 @@ export const researchInterests = [
   "Dynamic pricing and revenue management",
   "Stochastic control and data-driven optimization"
 ];
-
-export const research = {
-  summary: [
-    "My research is broadly about how to model, analyze, and optimize systems with congestion, uncertainty, and the strategic allocation of limited resources. I am especially drawn to problems where analytical structure can still offer useful guidance for modern computational systems.",
-    "One current direction studies AI infrastructure through an operations lens, including LLM inference systems and AI-human workflows. Another direction focuses on dynamic pricing, revenue management, and the role of financial constraints in shaping operational and business decisions."
-  ]
-};
 
 export const education = [
   {
@@ -109,5 +101,12 @@ export const papers = [
     authors: "Zean Han, Ruihan Lin, Zezhen Ding, and Jiheng Zhang",
     venue: "arXiv preprint",
     href: "https://arxiv.org/abs/2604.24016"
+  },
+  {
+    title:
+      "Nonparametric Contextual Pricing and Inventory Learning under Censored Demand",
+    authors: "Zean Han, Jing Liang, Ruihan Lin, Zezhen Ding, and Jiheng Zhang",
+    venue: "arXiv preprint",
+    href: "https://arxiv.org/abs/2608.30944"
   }
 ];
