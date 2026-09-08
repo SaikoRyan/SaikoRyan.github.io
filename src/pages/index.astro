@@ -4,7 +4,9 @@ import { education, papers, profile, siteMeta, teaching } from "../data/site";
 ---
 
 <BaseLayout title={siteMeta.title} description={siteMeta.description}>
-  <div class="rail" aria-hidden="true"></div>
+  <div class="rail" aria-hidden="true">
+    <div class="rail-fill"></div>
+  </div>
 
   <header class="topbar">
     <div class="wrap topbar-inner">
@@ -128,7 +130,7 @@ import { education, papers, profile, siteMeta, teaching } from "../data/site";
 
 <script>
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const root = document.documentElement;
+  const railFill = document.querySelector(".rail-fill") as HTMLElement | null;
   const panels = [...document.querySelectorAll(".panel")];
   const dots = [...document.querySelectorAll(".dots a")];
   const navs = [...document.querySelectorAll(".topbar nav a")];
@@ -143,13 +145,24 @@ import { education, papers, profile, siteMeta, teaching } from "../data/site";
     panel.querySelectorAll(".reveal, .reveal-photo").forEach((el) => el.classList.add("in"));
   };
 
+  let railTicking = false;
   const updateRail = () => {
-    const max = root.scrollHeight - window.innerHeight;
-    root.style.setProperty("--scroll", max > 0 ? String(window.scrollY / max) : "0");
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = max > 0 ? window.scrollY / max : 0;
+    if (railFill) railFill.style.transform = `scaleY(${progress})`;
+    railTicking = false;
   };
 
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (railTicking) return;
+      railTicking = true;
+      requestAnimationFrame(updateRail);
+    },
+    { passive: true }
+  );
   updateRail();
-  window.addEventListener("scroll", updateRail, { passive: true });
 
   if (reduceMotion) {
     document.querySelectorAll(".reveal, .reveal-photo").forEach((el) => el.classList.add("in"));
