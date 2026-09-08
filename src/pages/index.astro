@@ -4,6 +4,8 @@ import { education, papers, profile, siteMeta, teaching } from "../data/site";
 ---
 
 <BaseLayout title={siteMeta.title} description={siteMeta.description}>
+  <div class="rail" aria-hidden="true"></div>
+
   <header class="topbar">
     <div class="wrap topbar-inner">
       <a class="mark" href="#home">{profile.name}</a>
@@ -24,33 +26,49 @@ import { education, papers, profile, siteMeta, teaching } from "../data/site";
 
   <section class="panel" id="home">
     <div class="wrap hero">
-      <div class="reveal">
-        <h1>{profile.name}</h1>
-        <p class="role">{profile.role}</p>
-        <p class="line">{profile.institution}</p>
-        <p class="line">{profile.department}</p>
-        <p class="line">Advised by {profile.advisor}</p>
-        <p class="email">
+      <div>
+        <p class="kicker reveal" style="--d: 0">Homepage</p>
+        <h1 class="reveal" style="--d: 1">{profile.name}</h1>
+        <p class="role reveal" style="--d: 2">{profile.role}</p>
+        <p class="intro reveal" style="--d: 3">{profile.intro}</p>
+        <p class="line reveal" style="--d: 4">{profile.institution}</p>
+        <p class="line reveal" style="--d: 5">{profile.department} · Advised by {profile.advisor}</p>
+        <p class="email reveal" style="--d: 6">
           <a href={`mailto:${profile.email}`}>{profile.email}</a>
         </p>
       </div>
-      <img
-        class="photo reveal"
-        src={profile.photo}
-        alt={`Portrait of ${profile.name}`}
-        width="260"
-        height="325"
-      />
+      <div class="photo-frame reveal-photo">
+        <img
+          class="photo"
+          src={profile.photo}
+          alt={`Portrait of ${profile.name}`}
+          width="320"
+          height="400"
+        />
+      </div>
     </div>
-    <a class="scroll-cue" href="#about" aria-label="Next section">↓</a>
+    <a class="scroll-cue" href="#about">Scroll</a>
   </section>
 
   <section class="panel" id="about">
     <div class="wrap panel-inner">
-      <p class="kicker reveal">About</p>
-      <div class="measure">
-        {profile.bio.map((paragraph) => (
-          <p class="reveal">{paragraph}</p>
+      <div class="about-top">
+        <div>
+          <p class="kicker reveal" style="--d: 0">About</p>
+          <h2 class="panel-title reveal" style="--d: 1">Who I am</h2>
+        </div>
+        <div class="measure">
+          {profile.bio.map((paragraph, index) => (
+            <p class="reveal" style={`--d: ${index + 2}`}>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+      <div class="interest-grid">
+        {profile.interests.map((item, index) => (
+          <p class="interest reveal" style={`--d: ${index + 2}`}>
+            <span>0{index + 1}</span>
+            {item}
+          </p>
         ))}
       </div>
     </div>
@@ -58,17 +76,21 @@ import { education, papers, profile, siteMeta, teaching } from "../data/site";
 
   <section class="panel panel-papers" id="papers">
     <div class="wrap panel-inner">
-      <p class="kicker reveal">Working Papers</p>
+      <div class="section-head">
+        <p class="kicker reveal" style="--d: 0">Working Papers</p>
+        <h2 class="panel-title reveal" style="--d: 1">Selected research</h2>
+      </div>
       <div class="paper-grid">
-        {papers.map((paper) => (
-          <article class="paper reveal">
+        {papers.map((paper, index) => (
+          <article class="paper reveal" style={`--d: ${index + 1}`}>
+            <p class="venue">{paper.venue}</p>
             <h3>
               <a href={paper.href} target="_blank" rel="noopener">
                 {paper.title}
               </a>
             </h3>
             <p class="authors">{paper.authors}</p>
-            <p class="venue">{paper.venue}</p>
+            <p class="insight">{paper.insight}</p>
           </article>
         ))}
       </div>
@@ -77,14 +99,17 @@ import { education, papers, profile, siteMeta, teaching } from "../data/site";
 
   <section class="panel" id="experience">
     <div class="wrap panel-inner">
-      <p class="kicker reveal">Experience</p>
+      <div class="section-head">
+        <p class="kicker reveal" style="--d: 0">Experience</p>
+        <h2 class="panel-title reveal" style="--d: 1">Education and teaching</h2>
+      </div>
       <div class="split">
-        <div>
-          <h2 class="reveal">Education</h2>
+        <div class="surface reveal" style="--d: 2">
+          <h3>Education</h3>
           {education.map((entry) => (
-            <article class="record reveal">
+            <article class="record">
               <div class="record-head">
-                <h3>{entry.degree}</h3>
+                <p class="record-title">{entry.degree}</p>
                 <p class="when">{entry.period}</p>
               </div>
               <p class="where">{entry.school}</p>
@@ -92,12 +117,12 @@ import { education, papers, profile, siteMeta, teaching } from "../data/site";
             </article>
           ))}
         </div>
-        <div>
-          <h2 class="reveal">Teaching</h2>
+        <div class="surface reveal" style="--d: 3">
+          <h3>Teaching</h3>
           {teaching.map((entry) => (
-            <article class="record reveal">
+            <article class="record">
               <div class="record-head">
-                <h3>{entry.title}</h3>
+                <p class="record-title">{entry.title}</p>
                 <p class="when">{entry.period}</p>
               </div>
               <p class="where">{entry.organization}</p>
@@ -112,6 +137,7 @@ import { education, papers, profile, siteMeta, teaching } from "../data/site";
 
 <script>
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const root = document.documentElement;
   const panels = [...document.querySelectorAll(".panel")];
   const dots = [...document.querySelectorAll(".dots a")];
   const navs = [...document.querySelectorAll(".topbar nav a")];
@@ -122,11 +148,21 @@ import { education, papers, profile, siteMeta, teaching } from "../data/site";
   };
 
   const reveal = (panel: Element) => {
-    panel.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
+    panel.classList.add("is-in");
+    panel.querySelectorAll(".reveal, .reveal-photo").forEach((el) => el.classList.add("in"));
   };
 
+  const updateRail = () => {
+    const max = root.scrollHeight - window.innerHeight;
+    root.style.setProperty("--scroll", max > 0 ? String(window.scrollY / max) : "0");
+  };
+
+  updateRail();
+  window.addEventListener("scroll", updateRail, { passive: true });
+
   if (reduceMotion) {
-    document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
+    document.querySelectorAll(".reveal, .reveal-photo").forEach((el) => el.classList.add("in"));
+    panels.forEach((panel) => panel.classList.add("is-in"));
     setActive("home");
   } else {
     const observer = new IntersectionObserver(
@@ -137,7 +173,7 @@ import { education, papers, profile, siteMeta, teaching } from "../data/site";
           setActive(entry.target.id);
         });
       },
-      { threshold: 0.45 }
+      { threshold: 0.28 }
     );
 
     panels.forEach((panel) => observer.observe(panel));
