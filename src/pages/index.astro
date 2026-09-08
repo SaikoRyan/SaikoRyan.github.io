@@ -164,6 +164,67 @@ import { education, papers, profile, siteMeta, teaching } from "../data/site";
   );
   updateRail();
 
+  const desktop = () => window.innerWidth >= 901;
+  let snapping = false;
+  let settleTimer = 0;
+
+  const goTo = (el: Element) => {
+    snapping = true;
+    el.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "start"
+    });
+    window.setTimeout(() => {
+      snapping = false;
+    }, 650);
+  };
+
+  const settle = () => {
+    if (!desktop() || reduceMotion || snapping) return;
+
+    const y = window.scrollY;
+    const reach = window.innerHeight * 0.36;
+    let target: HTMLElement | null = null;
+    let best = Infinity;
+
+    for (const panel of panels) {
+      const el = panel as HTMLElement;
+      const dist = Math.abs(el.offsetTop - y);
+      if (dist < best) {
+        best = dist;
+        target = el;
+      }
+    }
+
+    if (!target || best < 10 || best > reach) return;
+
+    const top = target.offsetTop;
+    const inside = y > top + 28 && y < top + target.offsetHeight - reach;
+    if (inside) return;
+
+    goTo(target);
+  };
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!desktop() || reduceMotion || snapping) return;
+      window.clearTimeout(settleTimer);
+      settleTimer = window.setTimeout(settle, 170);
+    },
+    { passive: true }
+  );
+
+  document.querySelectorAll('.topbar a[href^="#"], .dots a').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const id = link.getAttribute("href")?.slice(1);
+      const el = id ? document.getElementById(id) : null;
+      if (!el) return;
+      event.preventDefault();
+      goTo(el);
+    });
+  });
+
   if (reduceMotion) {
     document.querySelectorAll(".reveal, .reveal-photo").forEach((el) => el.classList.add("in"));
     panels.forEach((panel) => panel.classList.add("is-in"));
