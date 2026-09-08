@@ -10,15 +10,21 @@ import { education, papers, profile, siteMeta, teaching } from "../data/site";
       <nav aria-label="On this page">
         <a href="#about">About</a>
         <a href="#papers">Papers</a>
-        <a href="#education">Education</a>
-        <a href="#teaching">Teaching</a>
+        <a href="#experience">Experience</a>
       </nav>
     </div>
   </header>
 
-  <main class="wrap">
-    <section class="hero" id="home">
-      <div>
+  <nav class="dots" aria-label="Sections">
+    <a href="#home" class="active" aria-label="Home"></a>
+    <a href="#about" aria-label="About"></a>
+    <a href="#papers" aria-label="Papers"></a>
+    <a href="#experience" aria-label="Experience"></a>
+  </nav>
+
+  <section class="panel" id="home">
+    <div class="wrap hero">
+      <div class="reveal">
         <h1>{profile.name}</h1>
         <p class="role">{profile.role}</p>
         <p class="line">{profile.institution}</p>
@@ -29,26 +35,33 @@ import { education, papers, profile, siteMeta, teaching } from "../data/site";
         </p>
       </div>
       <img
-        class="photo"
+        class="photo reveal"
         src={profile.photo}
         alt={`Portrait of ${profile.name}`}
         width="260"
         height="325"
       />
-    </section>
+    </div>
+    <a class="scroll-cue" href="#about" aria-label="Next section">↓</a>
+  </section>
 
-    <section class="block" id="about">
-      <h2>About</h2>
-      <div class="body">
-        {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
+  <section class="panel" id="about">
+    <div class="wrap panel-inner">
+      <p class="kicker reveal">About</p>
+      <div class="measure">
+        {profile.bio.map((paragraph) => (
+          <p class="reveal">{paragraph}</p>
+        ))}
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="block" id="papers">
-      <h2>Working Papers</h2>
-      <div class="body">
+  <section class="panel panel-papers" id="papers">
+    <div class="wrap panel-inner">
+      <p class="kicker reveal">Working Papers</p>
+      <div class="paper-grid">
         {papers.map((paper) => (
-          <article class="paper">
+          <article class="paper reveal">
             <h3>
               <a href={paper.href} target="_blank" rel="noopener">
                 {paper.title}
@@ -56,42 +69,78 @@ import { education, papers, profile, siteMeta, teaching } from "../data/site";
             </h3>
             <p class="authors">{paper.authors}</p>
             <p class="venue">{paper.venue}</p>
-            <p class="insight">{paper.insight}</p>
           </article>
         ))}
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="block" id="education">
-      <h2>Education</h2>
-      <div class="body">
-        {education.map((entry) => (
-          <article class="record">
-            <div class="record-head">
-              <h3>{entry.degree}</h3>
-              <p class="when">{entry.period}</p>
-            </div>
-            <p class="where">{entry.school}</p>
-            {entry.details.map((detail) => <p class="where">{detail}</p>)}
-          </article>
-        ))}
+  <section class="panel" id="experience">
+    <div class="wrap panel-inner">
+      <p class="kicker reveal">Experience</p>
+      <div class="split">
+        <div>
+          <h2 class="reveal">Education</h2>
+          {education.map((entry) => (
+            <article class="record reveal">
+              <div class="record-head">
+                <h3>{entry.degree}</h3>
+                <p class="when">{entry.period}</p>
+              </div>
+              <p class="where">{entry.school}</p>
+              {entry.details.map((detail) => <p class="where">{detail}</p>)}
+            </article>
+          ))}
+        </div>
+        <div>
+          <h2 class="reveal">Teaching</h2>
+          {teaching.map((entry) => (
+            <article class="record reveal">
+              <div class="record-head">
+                <h3>{entry.title}</h3>
+                <p class="when">{entry.period}</p>
+              </div>
+              <p class="where">{entry.organization}</p>
+              {entry.details.map((detail) => <p class="where">{detail}</p>)}
+            </article>
+          ))}
+        </div>
       </div>
-    </section>
-
-    <section class="block" id="teaching">
-      <h2>Teaching</h2>
-      <div class="body">
-        {teaching.map((entry) => (
-          <article class="record">
-            <div class="record-head">
-              <h3>{entry.title}</h3>
-              <p class="when">{entry.period}</p>
-            </div>
-            <p class="where">{entry.organization}</p>
-            {entry.details.map((detail) => <p class="where">{detail}</p>)}
-          </article>
-        ))}
-      </div>
-    </section>
-  </main>
+    </div>
+  </section>
 </BaseLayout>
+
+<script>
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const panels = [...document.querySelectorAll(".panel")];
+  const dots = [...document.querySelectorAll(".dots a")];
+  const navs = [...document.querySelectorAll(".topbar nav a")];
+
+  const setActive = (id: string) => {
+    dots.forEach((dot) => dot.classList.toggle("active", dot.getAttribute("href") === `#${id}`));
+    navs.forEach((link) => link.classList.toggle("active", link.getAttribute("href") === `#${id}`));
+  };
+
+  const reveal = (panel: Element) => {
+    panel.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
+  };
+
+  if (reduceMotion) {
+    document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
+    setActive("home");
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          reveal(entry.target);
+          setActive(entry.target.id);
+        });
+      },
+      { threshold: 0.45 }
+    );
+
+    panels.forEach((panel) => observer.observe(panel));
+    reveal(document.querySelector("#home") as Element);
+  }
+</script>
