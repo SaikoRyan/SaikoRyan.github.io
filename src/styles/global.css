@@ -251,7 +251,6 @@ img {
   display: grid;
   grid-template-columns: 16rem minmax(0, 1fr);
   gap: 3rem;
-  margin-bottom: 2.25rem;
 }
 
 .measure {
@@ -265,28 +264,6 @@ img {
 
 .measure p:last-child {
   margin-bottom: 0;
-}
-
-.interest-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.35rem 3rem;
-}
-
-.interest {
-  display: flex;
-  align-items: baseline;
-  gap: 0.9rem;
-  margin: 0;
-  padding: 0.15rem 0;
-  font-size: 1.12rem;
-}
-
-.interest span {
-  color: var(--accent);
-  font-family: "Source Serif 4", Georgia, serif;
-  font-weight: 600;
-  font-size: 0.95rem;
 }
 
 .paper-grid {
@@ -452,7 +429,6 @@ img {
 
   .hero,
   .about-top,
-  .interest-grid,
   .paper-grid,
   .split {
     grid-template-columns: 1fr;
