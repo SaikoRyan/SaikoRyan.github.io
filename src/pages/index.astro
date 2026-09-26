@@ -4,244 +4,70 @@ import { education, papers, profile, siteMeta, teaching } from "../data/site";
 ---
 
 <BaseLayout title={siteMeta.title} description={siteMeta.description}>
-  <div class="rail" aria-hidden="true">
-    <div class="rail-fill"></div>
-  </div>
-
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="mark" href="#home">{profile.name}</a>
-      <nav aria-label="On this page">
-        <a href="#about">About</a>
-        <a href="#papers">Papers</a>
-        <a href="#experience">Experience</a>
-      </nav>
-    </div>
-  </header>
-
-  <nav class="dots" aria-label="Sections">
-    <a href="#home" class="active" aria-label="Home"></a>
-    <a href="#about" aria-label="About"></a>
-    <a href="#papers" aria-label="Papers"></a>
-    <a href="#experience" aria-label="Experience"></a>
-  </nav>
-
-  <section class="panel" id="home">
-    <div class="wrap hero">
+  <main class="page">
+    <header id="home">
       <div>
-        <p class="kicker reveal" style="--d: 0">Homepage</p>
-        <h1 class="reveal" style="--d: 1">{profile.name}</h1>
-        <p class="role reveal" style="--d: 2">{profile.role}</p>
-        <p class="intro reveal" style="--d: 3">{profile.intro}</p>
-        <p class="line reveal" style="--d: 4">{profile.institution}</p>
-        <p class="line reveal" style="--d: 5">{profile.department} · Advised by {profile.advisor}</p>
-        <p class="email reveal" style="--d: 6">
-          <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        <h1>{profile.name}</h1>
+        <p class="role">{profile.role}</p>
+        <p>{profile.institution}</p>
+        <p>{profile.department}</p>
+        <p>Advised by {profile.advisor}</p>
+        <p>{profile.intro}</p>
+        <p>
+          Email: <a href={`mailto:${profile.email}`}>{profile.email}</a>
         </p>
+        <nav>
+          <a href="#about">About</a>
+          <a href="#papers">Papers</a>
+          <a href="#education">Education</a>
+          <a href="#teaching">Teaching</a>
+        </nav>
       </div>
-      <div class="photo-frame reveal-photo">
-        <img
-          class="photo"
-          src={profile.photo}
-          alt={`Portrait of ${profile.name}`}
-          width="320"
-          height="400"
-        />
-      </div>
-    </div>
-  </section>
+      <img
+        src={profile.photo}
+        alt={`Portrait of ${profile.name}`}
+        width="200"
+        height="250"
+      />
+    </header>
 
-  <section class="panel" id="about">
-    <div class="wrap panel-inner">
-      <div class="about-top">
-        <div>
-          <p class="kicker reveal" style="--d: 0">About</p>
-          <h2 class="panel-title reveal" style="--d: 1">Who I am</h2>
-        </div>
-        <div class="measure">
-          {profile.bio.map((paragraph, index) => (
-            <p class="reveal" style={`--d: ${index + 2}`}>{paragraph}</p>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
+    <section id="about">
+      <h2>About</h2>
+      {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
+    </section>
 
-  <section class="panel panel-papers" id="papers">
-    <div class="wrap panel-inner">
-      <div class="section-head">
-        <p class="kicker reveal" style="--d: 0">Working Papers</p>
-        <h2 class="panel-title reveal" style="--d: 1">Selected research</h2>
-      </div>
-      <div class="paper-grid">
-        {papers.map((paper, index) => (
-          <article class="paper reveal" style={`--d: ${index + 1}`}>
-            <p class="venue">{paper.venue}</p>
-            <h3>
-              <a href={paper.href} target="_blank" rel="noopener">
-                {paper.title}
-              </a>
-            </h3>
-            <p class="authors">{paper.authors}</p>
-            <p class="insight">{paper.insight}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
+    <section id="papers">
+      <h2>Working Papers</h2>
+      {papers.map((paper) => (
+        <article>
+          <p>
+            <a href={paper.href} target="_blank" rel="noopener">{paper.title}</a>
+          </p>
+          <p class="meta">{paper.authors}</p>
+          <p class="meta"><em>{paper.venue}</em></p>
+          <p>{paper.insight}</p>
+        </article>
+      ))}
+    </section>
 
-  <section class="panel" id="experience">
-    <div class="wrap panel-inner">
-      <div class="section-head">
-        <p class="kicker reveal" style="--d: 0">Experience</p>
-        <h2 class="panel-title reveal" style="--d: 1">Education and teaching</h2>
-      </div>
-      <div class="split">
-        <div class="surface reveal" style="--d: 2">
-          <h3>Education</h3>
-          {education.map((entry) => (
-            <article class="record">
-              <div class="record-head">
-                <p class="record-title">{entry.degree}</p>
-                <p class="when">{entry.period}</p>
-              </div>
-              <p class="where">{entry.school}</p>
-              {entry.details.map((detail) => <p class="where">{detail}</p>)}
-            </article>
-          ))}
-        </div>
-        <div class="surface reveal" style="--d: 3">
-          <h3>Teaching</h3>
-          {teaching.map((entry) => (
-            <article class="record">
-              <div class="record-head">
-                <p class="record-title">{entry.title}</p>
-                <p class="when">{entry.period}</p>
-              </div>
-              <p class="where">{entry.organization}</p>
-              {entry.details.map((detail) => <p class="where">{detail}</p>)}
-            </article>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
+    <section id="education">
+      <h2>Education</h2>
+      {education.map((entry) => (
+        <p>
+          <strong>{entry.degree}</strong>, {entry.school}, {entry.period}.
+          {entry.details.length > 0 ? ` ${entry.details.join(". ")}.` : ""}
+        </p>
+      ))}
+    </section>
+
+    <section id="teaching">
+      <h2>Teaching</h2>
+      {teaching.map((entry) => (
+        <p>
+          <strong>{entry.title}</strong>, {entry.organization}, {entry.period}.
+          {entry.details.length > 0 ? ` ${entry.details.join("; ")}.` : ""}
+        </p>
+      ))}
+    </section>
+  </main>
 </BaseLayout>
-
-<script>
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const railFill = document.querySelector(".rail-fill") as HTMLElement | null;
-  const panels = [...document.querySelectorAll(".panel")];
-  const dots = [...document.querySelectorAll(".dots a")];
-  const navs = [...document.querySelectorAll(".topbar nav a")];
-
-  const setActive = (id: string) => {
-    dots.forEach((dot) => dot.classList.toggle("active", dot.getAttribute("href") === `#${id}`));
-    navs.forEach((link) => link.classList.toggle("active", link.getAttribute("href") === `#${id}`));
-  };
-
-  const reveal = (panel: Element) => {
-    panel.classList.add("is-in");
-    panel.querySelectorAll(".reveal, .reveal-photo").forEach((el) => el.classList.add("in"));
-  };
-
-  let railTicking = false;
-  const updateRail = () => {
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = max > 0 ? window.scrollY / max : 0;
-    if (railFill) railFill.style.transform = `scaleY(${progress})`;
-    railTicking = false;
-  };
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (railTicking) return;
-      railTicking = true;
-      requestAnimationFrame(updateRail);
-    },
-    { passive: true }
-  );
-  updateRail();
-
-  const desktop = () => window.innerWidth >= 901;
-  let snapping = false;
-  let settleTimer = 0;
-
-  const goTo = (el: Element) => {
-    snapping = true;
-    el.scrollIntoView({
-      behavior: reduceMotion ? "auto" : "smooth",
-      block: "start"
-    });
-    window.setTimeout(() => {
-      snapping = false;
-    }, 650);
-  };
-
-  const settle = () => {
-    if (!desktop() || reduceMotion || snapping) return;
-
-    const y = window.scrollY;
-    const reach = window.innerHeight * 0.36;
-    let target: HTMLElement | null = null;
-    let best = Infinity;
-
-    for (const panel of panels) {
-      const el = panel as HTMLElement;
-      const dist = Math.abs(el.offsetTop - y);
-      if (dist < best) {
-        best = dist;
-        target = el;
-      }
-    }
-
-    if (!target || best < 10 || best > reach) return;
-
-    const top = target.offsetTop;
-    const inside = y > top + 28 && y < top + target.offsetHeight - reach;
-    if (inside) return;
-
-    goTo(target);
-  };
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (!desktop() || reduceMotion || snapping) return;
-      window.clearTimeout(settleTimer);
-      settleTimer = window.setTimeout(settle, 170);
-    },
-    { passive: true }
-  );
-
-  document.querySelectorAll('.topbar a[href^="#"], .dots a').forEach((link) => {
-    link.addEventListener("click", (event) => {
-      const id = link.getAttribute("href")?.slice(1);
-      const el = id ? document.getElementById(id) : null;
-      if (!el) return;
-      event.preventDefault();
-      goTo(el);
-    });
-  });
-
-  if (reduceMotion) {
-    document.querySelectorAll(".reveal, .reveal-photo").forEach((el) => el.classList.add("in"));
-    panels.forEach((panel) => panel.classList.add("is-in"));
-    setActive("home");
-  } else {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          reveal(entry.target);
-          setActive(entry.target.id);
-        });
-      },
-      { threshold: 0.28 }
-    );
-
-    panels.forEach((panel) => observer.observe(panel));
-    reveal(document.querySelector("#home") as Element);
-  }
-</script>
