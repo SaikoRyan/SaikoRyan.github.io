@@ -76,18 +76,18 @@ export const papers = [
   },
   {
     title:
-      "When to Screen, When to Bypass: LLM-Judges in Resource-Scarce AI-Human Workflow",
+      "When Should AI Review Precede Human Approval of Agent-Generated Code?",
     authors: "Ruihan Lin and Jiheng Zhang",
-    venue: "Under review, Management Science",
+    venue: "Under review, M&SOM",
     href: "https://arxiv.org/abs/2603.13870",
     insight:
-      "Whether to screen with an imperfect LLM judge depends on where the bottleneck sits; the optimal policy shows phase transitions."
+      "How much AI review to use is a staffing decision: the optimal intensity moves through phases as the bottleneck shifts."
   },
   {
     title:
       "Direction-Aware Offline-to-Online Learning in Linear Contextual Bandits",
     authors: "Zean Han, Ruihan Lin, Zezhen Ding, and Jiheng Zhang",
-    venue: "arXiv preprint",
+    venue: "NeurIPS 2026",
     href: "https://arxiv.org/abs/2604.24016",
     insight:
       "Uses biased offline data only along directions where it provably helps, avoiding harm from model mismatch."
