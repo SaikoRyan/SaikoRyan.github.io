@@ -12,11 +12,9 @@ export const profile = {
   email: "rlinah@connect.ust.hk",
   photo: "/photo.jpg",
   advisor: "Jiheng Zhang",
-  intro:
-    "I work on stochastic systems and dynamic decision making, with projects on LLM inference, human-AI workflows, and dynamic pricing.",
   bio: [
     "I received my Ph.D. in Industrial Engineering and Decision Analytics from the Hong Kong University of Science and Technology, advised by Jiheng Zhang. I will be joining the University of Oxford as a postdoctoral researcher.",
-    "I work on stochastic systems and dynamic decision making, using queueing, stochastic control, and optimization. Recent projects include large-scale LLM inference, human-AI workflows, and dynamic pricing.",
+    "I work on stochastic systems and dynamic decision making, using queueing, stochastic control, optimization, and online learning. Recent projects include large-scale LLM inference, human-AI workflows, and dynamic pricing.",
     "Before the Ph.D., I studied financial engineering at HKUST and worked on quantitative trading research."
   ]
 };
