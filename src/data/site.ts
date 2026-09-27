@@ -1,12 +1,12 @@
 export const siteMeta = {
   title: "Ruihan Lin",
   description:
-    "Ruihan Lin, PhD candidate at HKUST and incoming postdoctoral researcher at the University of Oxford."
+    "Ruihan Lin, Ph.D. from HKUST and incoming postdoctoral researcher at the University of Oxford."
 };
 
 export const profile = {
   name: "Ruihan Lin",
-  role: "PhD Candidate at HKUST",
+  role: "Ph.D., HKUST",
   institution: "Incoming Postdoctoral Researcher, University of Oxford",
   department: "Industrial Engineering and Decision Analytics",
   email: "rlinah@connect.ust.hk",
@@ -15,7 +15,7 @@ export const profile = {
   intro:
     "I work on stochastic systems and dynamic decision making, with projects on LLM inference, human-AI workflows, and dynamic pricing.",
   bio: [
-    "I am a Ph.D. candidate in Industrial Engineering and Decision Analytics at the Hong Kong University of Science and Technology, advised by Jiheng Zhang. I will be joining the University of Oxford as a postdoctoral researcher.",
+    "I received my Ph.D. in Industrial Engineering and Decision Analytics from the Hong Kong University of Science and Technology, advised by Jiheng Zhang. I will be joining the University of Oxford as a postdoctoral researcher.",
     "I work on stochastic systems and dynamic decision making, using queueing, stochastic control, and optimization. Recent projects include large-scale LLM inference, human-AI workflows, and dynamic pricing.",
     "Before the Ph.D., I studied financial engineering at HKUST and worked on quantitative trading research."
   ]
@@ -24,7 +24,7 @@ export const profile = {
 export const education = [
   {
     school: "Hong Kong University of Science and Technology",
-    period: "2022 – 2026 (expected)",
+    period: "2022 – 2026",
     degree: "Ph.D. in Industrial Engineering and Decision Analytics",
     details: ["Advisor: Prof. Jiheng Zhang"]
   },
